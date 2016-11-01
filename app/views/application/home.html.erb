@@ -1,0 +1,69 @@
+<%= render 'articles/header' %>
+
+<main>
+  <h1 class="header center orange-text">Filosofia na sua língua</h1>
+  <div class="row center">
+    <h5 class="header col s12 light">O PhilBrasil é o site indexador da filosofia em português</h5>
+  </div>
+
+<!--  Search-->
+<%= form_tag "/search", method: "get", id: "form-search" do %>
+<div class="container">
+  <div class="card-panel">
+    <nav class="grey base">
+      <div class="input-field">
+          <input type="search" placeholder="Pesquise por autores, artigos, livros..." name="search" id="search" class="form-control input-lg">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons" onclick="document.getElementById('form-search').reset();">close</i>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="container">
+  <div class="row padding-form-search-button">
+    <div class="col s12 center-align">
+      <%= submit_tag "Pesquisar", class: "btn-large waves-effect waves-light orange" %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+
+<div class="row center">
+  <a href="" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">search</i>Busca avançada</a>
+  <a href="/articles/new" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">input</i>Inserir referência</a>
+</div>
+
+
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="large material-icons">trending_up</i></h2>
+          <h5 class="center">Atualizações</h5>
+          <p class="light justify">Nosso banco de dados conta com 4169 artigos de xx revistas.</p>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="large material-icons">group</i></h2>
+          <h5 class="center">Contribuições</h5>
+          <p class="light">O PhilBrasil é um projeto sem fins lucrativos que visa a divulgação dos trabalhos acadêmicos brasileiros em Filosofia.</p>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="large material-icons">input</i></h2>
+          <h5 class="center">Submeta seu artigo</h5>
+          <p class="light text-justify">Sua contribuição também é importante. Ajude as pessoas a encontrar sua pesquisa submetendo sua contribuição diretamente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<%= render 'articles/footer'%>

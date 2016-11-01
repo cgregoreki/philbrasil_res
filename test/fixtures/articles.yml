@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: MyString
+  title: MyString
+  year: 1
+  magazine: MyString
+  vol_number: 9.99
+  translator: MyString
+  active: false
+  times_visited: 1
+  link: MyText
+  type: 
+  pub_company: MyString
+  pub_company_city: MyString
+  inside: MyString
+
+two:
+  author: MyString
+  title: MyString
+  year: 1
+  magazine: MyString
+  vol_number: 9.99
+  translator: MyString
+  active: false
+  times_visited: 1
+  link: MyText
+  type: 
+  pub_company: MyString
+  pub_company_city: MyString
+  inside: MyString

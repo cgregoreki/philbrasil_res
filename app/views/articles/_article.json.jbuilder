@@ -1,0 +1,2 @@
+json.extract! article, :id, :author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :type, :pub_company, :pub_company_city, :inside, :created_at, :updated_at
+json.url article_url(article, format: :json)

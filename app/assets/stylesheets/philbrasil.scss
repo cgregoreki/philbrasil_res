@@ -1,0 +1,94 @@
+html {
+	font-family: GillSans, Calibri, Trebuchet, sans-serif;
+	color: rgba(0, 0, 0, 0.54);
+	}
+    
+.card-panel{
+    float: none;
+    margin: 1px auto;
+    width: 800px;
+  padding: 0px;
+}
+
+nav ul a,
+nav .brand-logo{
+  color: rgba(255, 255, 255, 0.92);
+}
+
+@media only screen and (max-width : 992px) {
+   header, main, footer {
+    padding-left: 0;
+    }
+  }
+
+.text-justify{
+	text-align: justify;
+	text-indent: 30px;
+}
+
+.text-logo{
+	font-family: 'Playfair Display', serif;
+}
+
+.padding-left-logo {
+	padding-left: 40px;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.btn-acessar {
+	background-color: green;
+}
+
+.display-block {
+	width:100%;
+	display: block;
+}
+
+.padding-form {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+.padding-chip-notice {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px; 
+	padding-bottom: 10px;
+	background-color: green;
+	color: white;
+	font-size: large;
+}
+
+.article-title {
+	color: brown;
+}
+
+.article-author{
+	color: blue;
+	font-size: large;
+}
+
+.button-link {
+ background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+.button-link:focus {
+  outline: none;
+}
+
+.padding-form-search-button {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

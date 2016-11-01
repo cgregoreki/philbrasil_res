@@ -1,0 +1,66 @@
+<%= render 'header' %>
+<main class="valign-wrapper">
+
+	<div class="container valign">
+	<!--
+		<div class="row">
+		
+			<div class="col s12 m9 l10">
+	      		<h3 class="">Inserir artigo, resenha, tradução...</h3>
+	    	</div>
+	    
+	  	</div>
+	-->
+	  	<ul class="collapsible" data-collapsible="accordion">
+	  		<li>
+	  			<div class="collapsible-header"><i class="material-icons">description</i>Artigo</div>
+	  			<div class="collapsible-body">
+		  			<div class="container padding-form">
+		  				<%= render 'form', article: @article %>
+		  			</div>
+	  			</div>
+	  		</li>
+	  		<li>
+	  			<div class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i>Livro</div>
+	  			<div class="collapsible-body">
+	  				<div class="container padding-form">
+		  				<%= render 'form_book', article: @article %>
+		  			</div>
+	  			</div>
+	  		</li>
+	  		<li>
+	  			<div class="collapsible-header"><i class="material-icons">library_books</i>Capítulo de Livro</div>
+	  			<div class="collapsible-body">		  			
+	  				<div class="container padding-form">
+		  				<%= render 'form_book_chapter', article: @article %>
+		  			</div>
+				</div>
+	  		</li>
+	  	</ul>
+        
+		
+
+	</div>
+
+	<!-- 
+	<%= link_to 'Back', articles_path %>
+	-->
+
+</main>
+
+<%= render 'footer' %>
+
+<!-- this is to move the labels that stays fixed over placeholders -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		Materialize.updateTextFields();
+	});
+
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+        
+</script>

@@ -1,0 +1,4 @@
+<%= form_for @article, url: article_access_path(@article.id), method: :post do |f| %>
+	<!--<%= hidden_field_tag :id, @article.id %>-->
+	<%= f.submit @article.link, class: "button-link" %>
+<% end %>

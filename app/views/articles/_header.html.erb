@@ -4,11 +4,39 @@
       <nav class="text-white teal base  padding-left-logo">
       <a href="/" class="brand-logo text-logo">PhilBrasil</a>
         <ul class="right hide-on-med-and-down">
-          <li class="active"><a href="/" >PhilBrasil</a></li>
-          <li><%= link_to 'Atualizações', 'atualizacoes'%></li>
-          <li><%= link_to 'Blog', 'https://philbrasil.github.io/' %></li>
-          <li><%= link_to 'Colabore', 'colabore'%></li>
-          <li><%= link_to 'Sobre', 'sobre' %></li>
+          <%if @active_menu == "home" %>
+            <li class="active"><a href="/" >PhilBrasil</a></li>
+          <% else %>
+            <li><a href="/" >PhilBrasil</a></li>
+          <% end %>
+          
+          <%if @active_menu == "updates" %>
+            <li class="active"><%= link_to 'Atualizações', 'atualizacoes'%></li>
+          <% else %>
+            <li><%= link_to 'Atualizações', 'atualizacoes'%></li>
+          <% end %>
+
+
+          <%if @active_menu == "" %>
+            <li class="active"><%= link_to 'Blog', 'https://philbrasil.github.io/' %></li>
+          <% else %>
+            <li><%= link_to 'Blog', 'https://philbrasil.github.io/' %></li>
+          <% end %>
+          
+
+          <%if @active_menu == "collaborate" %>
+            <li class="active"><%= link_to 'Colabore', 'colabore'%></li>
+          <% else %>
+            <li><%= link_to 'Colabore', 'colabore'%></li>
+          <% end %>
+          
+
+          <%if @active_menu == "about" %>
+            <li class="active"><%= link_to 'Sobre', 'sobre' %></li>
+          <% else %>
+            <li><%= link_to 'Sobre', 'sobre' %></li>
+          <% end %>
+          
         </ul>
       </nav>
     </div>

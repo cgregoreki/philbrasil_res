@@ -22,19 +22,21 @@
 <div class="container">
   <div class="row padding-form-search-button">
     <div class="col s12 center-align">
-      <%= submit_tag "Pesquisar", class: "btn-large waves-effect waves-light orange" %>
+      <!-- <%= submit_tag "Pesquisar", class: "btn-large waves-effect waves-light orange" %> -->
     </div>
   </div>
 </div>
 
-<% end %>
-
 
 <div class="row center">
-  <a href="" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">search</i>Busca avançada</a>
-  <a href="/articles/new" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">input</i>Inserir referência</a>
+  <!-- <a href="" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">search</i>Busca avançada</a> -->
+  <!-- <%= submit_tag "Pesquisar", class: "btn-large waves-effect waves-light orange" %> -->
+  <%= button_tag( :class => "btn-large waves-effect waves-light orange") do %>
+    Pesquisar <i class="material-icons left">search</i>
+  <% end %>
+   <a href="/articles/new" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">input</i>Inserir referência</a>
 </div>
-
+<% end %>
 
 <div class="container">
   <div class="section">

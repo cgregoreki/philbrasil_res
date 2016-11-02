@@ -8,5 +8,8 @@ class ApplicationController < ActionController::Base
   def about
 
   end
+
+  def collaborate
+  end
   
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	get 'search', to: "articles#search"
 	get 'sobre', to: "application#about"
 	get 'colabore', to: "application#collaborate"
+	get 'atualizacoes', to: "application#updates"
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 

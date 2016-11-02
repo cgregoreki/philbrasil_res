@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
 
   def collaborate
   end
+
+  def updates
+  	@last_submissions = Article.all.order(created_at: :desc).limit(50)
+  end
   
 end

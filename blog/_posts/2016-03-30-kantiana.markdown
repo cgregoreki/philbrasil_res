@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Studia Kantiana no PhilBrasil"
+date:   2013-05-24 19:45:31 +0530
+categories: blog
+---
+A revista <a href="http://www.sociedadekant.org/studiakantiana/">Studia Kantiana</a>, Revista da Sociedade Kant Brasileira, acaba de ser acrescentada ao banco de dados do PhilBrasil. A Studia Kantiana tem conceito B1 no Qualis-Capes.

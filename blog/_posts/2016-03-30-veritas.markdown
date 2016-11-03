@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Veritas no Philbrasil"
+date:   2013-03-19 19:45:31 +0530
+categories: blog
+---
+A revista <a href="http://revistaseletronicas.pucrs.br/ojs/index.php/veritas/index">Veritas</a>, do Programa de Pós-Graduação em Filosofia da PUC-RS, acaba de ser adicionada à base de dados do PhilBrasil. A Veritas tem Qualis A2. Com sua adição, o PhilBrasil passa a contar com mais de 2700 referências.

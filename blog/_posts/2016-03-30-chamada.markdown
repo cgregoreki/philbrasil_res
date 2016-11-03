@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Chamada para contribuições"
+date:   2013-07-27 19:45:31 +0530
+categories: blog
+---
+O portal PhilBrasil – <a href="http://philbrasil.com.br">http://philbrasil.com.br</a> – convida a comunidade filosófica a contribuir com textos de apresentação para as categorias do site. Há várias categorias e subcategorias: metafísica, ética, verdade, filosofia da mente, filosofia política, filosofia da ciência, causalidade etc, e novas categorias podem ser propostas. O propósito dos textos de apresentação é oferecer uma introdução clara e sucinta ao assunto e sua literatura, que possa servir de orientação para iniciantes no tópico em questão. Esperamos com isso ter uma ferramenta útil para o ensino e a pesquisa em filosofia no Brasil.
+
+Orientações para os interessados em colaborar:
+<ol>
+	<li>Entrar em contato com Marcelo Fischborn – marcelo_fischborn [arroba] yahoo.com.br – informando a categoria ou subcategoria com a qual gostaria de colaborar, aguardando confirmação de disponibilidade.</li>
+	<li>Estando a categoria disponível, o autor terá um prazo de 45 dias (ou a combinar) para apresentar uma versão inicial do texto (ver orientações abaixo). O texto será posteriormente avaliado por um especialista na área, podendo ser aceito, ter modificações sugeridas ou rejeitado.</li>
+	<li>O texto aprovado aparecerá no site PhilBrasil, na página da categoria/subcategoria em questão, incluindo o nome do autor e, se desejar, um link para seu currículo ou página pessoal.</li>
+</ol>
+Orientações para a elaboração dos textos:
+<ol>
+	<li>O texto deverá ter um tamanho máximo de 250 palavras (excluindo referências).</li>
+	<li>O texto deverá apresentar o tópico em questão de forma clara e precisa.</li>
+	<li>O texto deverá mencionar os trabalhos mais centrais na área, estando estes disponíveis em português ou não. As referências citadas que ainda não estiverem cadastradas no site serão cadastradas.</li>
+	<li>Um texto provisório que pode ser utilizado como modelo está disponível em <a href="http://philbrasil.com.br/referencias/page/40/">http://philbrasil.com.br/referencias/page/40/</a> .</li>
+</ol>
+Dúvidas e sugestões podem ser enviadas para marcelo_fischborn [arroba] yahoo.com.br .

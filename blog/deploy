@@ -1,0 +1,4 @@
+#! /bin/sh
+
+jekyll build
+rsync -va --delete-after _site/ ../public/blog

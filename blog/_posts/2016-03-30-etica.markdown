@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Revista Ethic@"
+date:   2013-10-05 19:45:31 +0530
+categories: blog
+---
+A revista <a href="https://periodicos.ufsc.br/index.php/ethic/index">Ethic@</a> (Qualis B1), do publicada pelo Núcleo de Ética e Filosofia Política da UFSC, acaba de ser indexada no PhilBrasil. Seus artigos já estão disponíveis nas ferramentas de busca do site, e deverão ser destinados aos poucos às respectivas categorias.

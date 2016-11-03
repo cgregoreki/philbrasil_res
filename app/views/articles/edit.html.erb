@@ -5,9 +5,4 @@
 <%= link_to 'Show', @article %> |
 <%= link_to 'Back', articles_path %>
 
-<!-- this is to move the labels that stays fixed over placeholders -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		Materialize.updateTextFields();
-	});
-</script>
+<%= render 'application/final_scripts' %>

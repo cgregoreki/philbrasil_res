@@ -49,18 +49,4 @@
 </main>
 
 <%= render 'footer' %>
-
-<!-- this is to move the labels that stays fixed over placeholders -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		Materialize.updateTextFields();
-	});
-
-
-  $(document).ready(function(){
-    $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  });
-        
-</script>
+<%= render 'application/final_scripts' %>

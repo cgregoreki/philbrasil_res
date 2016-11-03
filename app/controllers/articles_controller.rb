@@ -4,16 +4,19 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    render status: :forbidden, text: "You do not have access to this page."
+    # @articles = Article.all
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @active_page_title = @article.title + " - " + @article.author
   end
 
   # GET /articles/new
   def new
+    @active_page_title = "Inserir Referência"
     @article = Article.new
   end
 
@@ -27,6 +30,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    @active_page_title = "Inserir Referência"
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -73,6 +77,7 @@ class ArticlesController < ApplicationController
 
   #execute a simple search
   def search
+    @active_page_title = "Pesquisar"
     search_string = params[:search]
     if search_string.length < 1 then
       redirect_to "/"

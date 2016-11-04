@@ -2,7 +2,9 @@
   <nav>
     <div class="nav-wrapper">
       <nav class="text-white teal base  padding-left-logo">
-      <a href="/" class="brand-logo text-logo">PhilBrasil</a>
+      <%= render 'sidebar' %>
+      <a href="/" class="brand-logo text-logo">&nbsp &nbsp PhilBrasil</a>
+
         <ul class="right hide-on-med-and-down">
           <%if @active_menu == "home" %>
             <li class="active"><a href="/" >PhilBrasil</a></li>

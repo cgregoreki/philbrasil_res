@@ -34,6 +34,11 @@
             <li><%= link_to 'Colabore', 'colabore'%></li>
           <% end %>
           
+           <%if @active_menu == "contact" %>
+            <li class="active"><%= link_to 'Contato', 'contact'%></li>
+          <% else %>
+            <li><%= link_to 'Contato', 'contact'%></li>
+          <% end %>
 
           <%if @active_menu == "about" %>
             <li class="active"><%= link_to 'Sobre', 'sobre' %></li>

@@ -1,0 +1,56 @@
+<%= render 'articles/header' %>
+
+<main>
+
+     <% if flash[:notice] %>
+
+        <div class="center-align">
+            <h5><%= flash[:notice] %></h5>
+        </div>
+
+    <% else %>
+
+        <div class="container">
+
+            <%= form_for @contact, url: contact_path do |contact_form| %>
+
+            <div class="row">
+                <div class="col s12">
+                    <h3>Contato</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+
+                    <%= contact_form.label :name, "Nome:" %>
+                    <%= contact_form.text_field :name, placeholder: "Carlos Gregoreki" %>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <%= contact_form.label :email, "Email:" %>
+
+                    <%= contact_form.email_field :email, placeholder: "cgregoreki@gmail.com", class: "validate" %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <%= contact_form.label :message, "Mensagem:" %>
+                    <%= contact_form.text_area :message, placeholder: "Digite aqui sua mensagem.", class: "materialize-textarea"%>
+                </div>
+            </div>  
+
+            <div class="row center-align">
+                <%= contact_form.submit "Enviar", class: "btn waves-effect waves-light" %>
+            </div>
+
+            <% end %>
+        </div>
+    <% end %>
+</main>
+<%= render 'articles/footer' %>
+<%= render 'application/final_scripts' %>

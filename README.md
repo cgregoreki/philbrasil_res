@@ -50,6 +50,6 @@ Mailer Configuration
 The mailer is configurated to work under development environment. However, you'll need to inform your credentials for your email account to use the service. For PhilBrasil, we are using the Google smtp server. So, the configuration is valid for this server. 
 
 To put your credentials, open `config/environments/development.rb` and replace your credentials where indicated.
-
+For the production environment, we aren providing any configuration. You should do it on your own. Good luck.
 
 <sup>1</sup> Maybe you need to update PATH or the gem executables will not run. Add `export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"` to your .bashrc or .zshrc, before you install the bundles.

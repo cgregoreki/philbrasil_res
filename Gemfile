@@ -41,6 +41,7 @@ gem 'materialize-sass'
 #awesome-fonts for icons
 gem 'font-awesome-sass'
 
+gem "nilify_blanks"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @active_page_title = @article.title + " - " + @article.author
+    puts 'TIpo do registro:' + @article.article_type
   end
 
   # GET /articles/new
@@ -118,6 +119,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside)
+      params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside, :edition)
     end
 end

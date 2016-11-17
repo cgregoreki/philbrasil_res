@@ -39,27 +39,43 @@
           <tr>
             <td><b>Ano:</b></td><td><%= @article.year%></td>
           </tr>
+          <% if @article.article_type.to_i == 0 %>
           <tr>
             <td><b>Revista:</b></td> <td> <%= @article.magazine%> </td>
           </tr>
+          <% end %>
+          <% if @article.article_type.to_i == 0 %>
           <tr>
             <td><b>Volúme Número:</b></td> <td> <%= @article.vol_number%> </td>
           </tr>
+          <% else %>
+          <tr>
+            <td><b>Edição:</b></td> <td> <%= @article.edition%> </td>
+          </tr>
+          <% end %>
+          <% if @article.translator != nil and @article.translator.length > 1 %>
           <tr>
             <td><b>Tradutor:</b></td> <td> <%= @article.translator%> </td>
           </tr>
+          <% end %>
           <tr>
-            <td><b>Quantidade de acessos:</b></td> <td> <%= @article.times_visited%> </td>
+            <td><b>Quantidade de acessos:</b></td> <td>  <%= @article.times_visited == nil ? 0 : @article.times_visited %> </td>
           </tr>
+          <% if @article.article_type.to_i == 1 or @article.article_type.to_i == 2 %>
           <tr>
             <td><b>Editora:</b></td> <td> <%= @article.pub_company%> </td>
           </tr>
+
           <tr>
             <td><b>Cidade:</b></td> <td> <%= @article.pub_company_city%> </td>
           </tr>
+          <% end %>
+
+          <%if @article.article_type.to_i == 2 %>
           <tr>
             <td><b><i>In:</i></b></td> <td> <%= @article.inside%> </td>
           </tr>
+          <% end %>
           <tr>
           <td>Acesse:</td><td>
           

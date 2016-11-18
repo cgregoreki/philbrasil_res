@@ -19,13 +19,12 @@ class ArticlesController < ApplicationController
   def new
     @active_page_title = "Inserir Referência"
     @article = Article.new
+    @all_categories = Category.all
   end
 
   # GET /articles/1/edit
   def edit
     render status: :forbidden, text: "You do not have access to this page."
-
-
   end
 
   # POST /articles
@@ -33,6 +32,10 @@ class ArticlesController < ApplicationController
   def create
     @active_page_title = "Inserir Referência"
     @article = Article.new(article_params)
+    selected_categories_params = params['selected_categories']
+    selected_categories_params.each do |sc|
+      @article.categories.append(Category.find(sc.to_i))
+    end
 
     respond_to do |format|
       if @article.save
@@ -119,6 +122,10 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside, :edition)
+      params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside, :edition, :selected_categories)
+    end
+
+    def article_params
+      params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside, :edition, :selected_categories)
     end
 end

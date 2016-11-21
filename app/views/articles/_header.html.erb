@@ -18,6 +18,12 @@
             <li><%= link_to 'Atualizações', '/atualizacoes'%></li>
           <% end %>
 
+          <%if @active_menu == "categories" %>
+            <li class="active"><%= link_to 'Categorias', '/categories'%></li>
+          <% else %>
+            <li><%= link_to 'Categorias', '/categories'%></li>
+          <% end %>
+
 
           <%if @active_menu == "" %>
             <!-- <li class="active"><%= link_to 'Blog', 'https://philbrasil.github.io/' %></li> -->

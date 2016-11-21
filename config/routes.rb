@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 	resources :articles do
 		post 'access'
 	end
+
+	resources :categories, only: [:index, :show]
+	
 	get 'search', to: "articles#search"
 	get 'sobre', to: "application#about"
 	get 'colabore', to: "application#collaborate"

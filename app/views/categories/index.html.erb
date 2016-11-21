@@ -1,0 +1,24 @@
+<%= render 'articles/header' %>
+<main>
+    <div class="container">
+        <br/>
+        <h1>Categorias</h1>
+    </div>
+
+    <div class="container">
+        <% @all_categories_groups_of_2.each do |group| %>
+        <div class="row">
+            <div class="col s6">  
+                <%= link_to group[0].name, category_path(group[0].id)  %>
+            </div>
+            <div class="col s6">  
+                <%= link_to group[1].name, category_path(group[1].id)  %>
+            </div>
+            
+        </div>
+        <% end %>
+    </div>
+</main>
+
+<%= render 'articles/footer' %>
+

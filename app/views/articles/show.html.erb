@@ -84,6 +84,14 @@
           </td>
           </tr>
 
+          <tr><td>Categorias:</td>
+          <td>
+            <% @article.categories.each do |cat|%>
+            <%= cat.name %> <br/>
+            <% end %>
+          </td>
+          </tr>
+
         </tbody>
       </table>
     </div>

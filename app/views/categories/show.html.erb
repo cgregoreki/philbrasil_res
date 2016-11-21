@@ -1,0 +1,49 @@
+<%= render 'articles/header' %>
+<main>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3><%= @category.name %></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <%= @category.description %>
+            </div>
+        </div>
+
+        <% @category.articles.each do |art| %>
+        <div class="row"> 
+            <div class="col s12">
+                <%= art.author %>. <b><%= link_to art.title, article_path(art.id) %>.</b> <i>In: <%= art.magazine %></i><% if art.vol_number != nil %>, <%= art.vol_number%><% end %><% if art.year != nil %>, <%= art.year %>. <% else %>. <% end %>
+                <% if art.translator != nil %>Tradução de <%= art.translator %>. <% end %>
+
+                <ul class="collapsible popout" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">library_books</i>Bibtex</div>
+                        <div class="collapsible-body">
+                            <p>
+                                <pre class="language-latex">
+                                    <span class="bib">@article{<%= art.magazine %><% if art.year != nil %><%= art.year %><% else %><% end %>,</span>
+                                    <span class="Author">Author = {<%= art.author %>},</span>
+                                    <span class="Journal">Journal = {<%= art.magazine %>},</span>    
+                                    <span class="Title">Title = {<%= art.title %>},</span>
+                                    <span class="Volume">Volume = {<% if art.vol_number != nil %><%= art.vol_number%><% end %>},</span>
+                                    <span class="Year">Year = {<% if art.year != nil %><%= art.year %><% else %><% end %>}}</span>
+                                </pre>
+                            </p>
+                        </div>
+                    </li>
+                </ul> 
+            </div>
+        </div> 
+        <% end %>
+
+    </div>
+</main>
+
+<%= render 'articles/footer' %>
+<%= render 'application/final_scripts' %>
+

@@ -73,6 +73,13 @@
   </div>
 
   
+  <div class="row">
+    <div class="input-field col s12">
+    <%= select_tag "selected_categories[]", options_from_collection_for_select(@all_categories, "id", "name"), {multiple: true} %>
+    <label>Selecione Categorias</label>
+  </div>
+
+  
 
   <div class="actions">
     <%= f.submit "Submeter", class: "btn waves-effect waves-light display-block btn-acessar" %>

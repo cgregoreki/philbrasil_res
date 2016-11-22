@@ -10,7 +10,7 @@
         <% if (c.children.length == 0 and c.parents.length == 0) or (c.children.length != 0) %>
         <ul class="collection with-header">
 
-            <li class="collection-header"><h4><%= link_to c.name, category_path(c.id) %></h4></li>
+            <li class="collection-header"><h4><%= link_to c.name, category_path(c.id) %> (<%= c.articles.length%>)</h4></li>
             <% c.children.each do |sc| %>
             <li class="collection-item"><%= link_to sc.name, category_path(sc.id) %> (<%= sc.articles.length %>)</li>
             <%end%>

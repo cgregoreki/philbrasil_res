@@ -10,9 +10,15 @@
         <% if (c.children.length == 0 and c.parents.length == 0) or (c.children.length != 0) %>
         <ul class="collection with-header">
 
-            <li class="collection-header"><h4><%= link_to c.name, category_path(c.id) %> (<%= c.articles.length%>)</h4></li>
+            <li class="collection-header"><h4 id="<%= (10000 + c.id).to_s %>"><%= link_to c.name, category_path(c.id) %> (<%= c.articles.length%>)</h4></li>
             <% c.children.each do |sc| %>
-            <li class="collection-item"><%= link_to sc.name, category_path(sc.id) %> (<%= sc.articles.length %>)</li>
+            <li class="collection-item">
+                <% if sc.children.length > 0 %>
+                    <%= link_to sc.name, categories_path(anchor: (10000 + sc.id).to_s ) %> (<%= sc.articles.length %>)
+                <% else %>
+                    <%= link_to sc.name, category_path(sc.id) %> (<%= sc.articles.length %>)
+                <% end %>
+            </li>
             <%end%>
         </ul>
         <% end %>

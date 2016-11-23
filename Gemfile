@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'nokogiri'
+
 #materialize style
 gem 'materialize-sass'
 #gem 'jquery-turbolinks'

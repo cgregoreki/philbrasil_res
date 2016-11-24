@@ -1,65 +1,83 @@
 <%= form_for(article, :html => {:class => 'col s12'}) do |f| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<% if article.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>  
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>  
+    <% article.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.label :author, "Autor" %>
-      <%= f.text_field :author, placeholder: "CARNAP, Rudolf", class: "validate" %>
-    </div>
+<div class="row">
+  <div class="input-field col s12">
+    <%= f.label :author, "Autor" %>
+    <%= f.text_field :author, placeholder: "CARNAP, Rudolf", class: "validate" %>
   </div>
+</div>
 
-  <div class="row">
+<div class="row">
   <div class="input-field col s12">
     <%= f.label :title, "Título" %>
     <%= f.text_field :title, placeholder: "Uberwindung der Metaphysik durch logische Analyse der Sprache", class: "validate" %>
   </div>
-  </div>
+</div>
 
-  <div class="row">
-  <div class="input-field col s4">
+<div class="row">
+  <div class="input-field col s6">
     <%= f.label :magazine, "Revista" %>
     <%= f.text_field :magazine, placeholder: "Erkenntnis", class: "validate" %>
   </div>
 
-  <div class="input-field col s4">
+  <div class="input-field col s6">
     <%= f.label :year, "Ano" %>
     <%= f.number_field :year, placeholder: "1931", class: "validate" %>
   </div>
+</div>
+<div class="row">
+  <div class="input-field col s6">
+    <%= f.label :issue, "Número" %>
+    <%= f.text_field :issue, placeholder: "1", class: "validate" %>
+  </div>
 
-  <div class="input-field col s4">
+  <div class="input-field col s6">
     <%= f.label :vol_number, "Volume" %>
-    <%= f.text_field :vol_number, placeholder: "1.2", class: "validate" %>
-  </div>
+    <%= f.text_field :vol_number, placeholder: "2", class: "validate" %>
   </div>
 
-  <div class="row">
+</div>
+
+<div class="row">
+  <div class="input-field col s6">
+    <%= f.label :first_page, "Página Inicial" %>
+    <%= f.text_field :first_page, placeholder: "120", class: "validate" %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :last_page, "Página Final" %>
+    <%= f.text_field :last_page, placeholder: "130", class: "validate" %>
+  </div>
+</div>
+
+<div class="row">
   <div class="input-field col s12">
     <%= f.label :translator, "Tradutor" %>
     <%= f.text_field :translator, placeholder: "Tamires Dalmagro", class: "validate" %>
   </div>
-  </div>
+</div>
 
-  <%= f.hidden_field :article_type, value: "0" %>
+<%= f.hidden_field :article_type, value: "0" %>
 
-  <div class="row">
+<div class="row">
   <div class="input-field col s12">
     <%= f.label :link, "Link" %>
     <%= f.text_field :link, placeholder: "http://site-editora.com.br/artigo.html", class: "validate" %>
   </div>
-  </div>
+</div>
 
-  <div class="row">
-    <div class="input-field col s12">
+<div class="row">
+  <div class="input-field col s12">
     <%= select_tag "selected_categories[]", options_from_collection_for_select(@all_categories, "id", "name"), {multiple: true} %>
     <label>Selecione Categorias</label>
   </div>
@@ -67,4 +85,5 @@
   <div class="actions">
     <%= f.submit "Submeter", class: "btn waves-effect waves-light display-block btn-acessar" %>
   </div>
+</div>
 <% end %>

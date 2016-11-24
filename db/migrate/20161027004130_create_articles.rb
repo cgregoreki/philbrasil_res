@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.string :magazine
       t.float :vol_number
       t.string :translator
-      t.boolean :active
+      t.boolean :active, default: true
       t.integer :times_visited
       t.text :link
       t.string :article_type

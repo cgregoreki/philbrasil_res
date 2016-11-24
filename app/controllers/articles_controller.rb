@@ -89,7 +89,8 @@ class ArticlesController < ApplicationController
     @articles = Article.where("author like ? 
       or title like ? 
       or magazine like ?
-      or translator like ?", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%")
+      or translator like ?
+      or keywords like ?", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%")
     @articles.each do |art|
       if art.title[-1,1] == '.' then
         art.title = art.title[0, art.title.length - 1]

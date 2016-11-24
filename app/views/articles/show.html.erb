@@ -46,7 +46,13 @@
           <% end %>
           <% if @article.article_type.to_i == 0 %>
           <tr>
-            <td><b>Volúme Número:</b></td> <td> <%= @article.vol_number%> </td>
+            <td><b>Número:</b></td> <td> <%= @article.issue%> </td>
+          </tr>
+          <tr>
+            <td><b>Volúme:</b></td> <td> <%= @article.vol_number%> </td>
+          </tr>
+          <tr>
+            <td><b>Páginas:</b></td> <td> <%= @article.first_page %> <% if @article.last_page != nil %>- <%= @article.last_page %><% end %> </td>
           </tr>
           <% else %>
           <tr>
@@ -84,10 +90,13 @@
           </td>
           </tr>
 
+          <tr>
+            <td>Palavras-Chave</td><td> <%= @article.keywords %></td>
+          </tr>
           <tr><td>Categorias:</td>
           <td>
             <% @article.categories.each do |cat|%>
-            <%= cat.name %> <br/>
+            <%= link_to cat.name, category_path(cat.id) %> <br/>  
             <% end %>
           </td>
           </tr>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123175450) do
+ActiveRecord::Schema.define(version: 20161124024858) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "author"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20161123175450) do
     t.string   "issue"
     t.integer  "first_page"
     t.integer  "last_page"
+    t.text     "keywords",         limit: 65535
   end
 
   create_table "articles_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

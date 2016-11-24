@@ -78,6 +78,15 @@
 
 <div class="row">
   <div class="input-field col s12">
+    <%= f.label :keywords, "Palavras-chave (separadas por vírgulas)" %>
+    <%= f.text_field :keywords, placeholder: "Idealismo Transcendental, Dialética, Ilusão, Realismo Empírico", class: "validate" %>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="input-field col s12">
     <%= select_tag "selected_categories[]", options_from_collection_for_select(@all_categories, "id", "name"), {multiple: true} %>
     <label>Selecione Categorias</label>
   </div>

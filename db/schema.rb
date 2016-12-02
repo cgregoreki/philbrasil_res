@@ -19,15 +19,15 @@ ActiveRecord::Schema.define(version: 20161124024858) do
     t.string   "magazine"
     t.float    "vol_number",       limit: 24
     t.string   "translator"
-    t.boolean  "active"
+    t.boolean  "active",                         default: true
     t.integer  "times_visited"
     t.text     "link",             limit: 65535
     t.string   "article_type"
     t.string   "pub_company"
     t.string   "pub_company_city"
     t.string   "inside"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "edition"
     t.string   "issue"
     t.integer  "first_page"

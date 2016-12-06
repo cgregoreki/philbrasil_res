@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'nokogiri'
+gem 'open_uri_redirections'
+gem 'colorize'
 
 #materialize style
 gem 'materialize-sass'

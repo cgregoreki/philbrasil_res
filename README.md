@@ -52,4 +52,15 @@ The mailer is configurated to work under development environment. However, you'l
 To put your credentials, open `config/environments/development.rb` and replace your credentials where indicated.
 For the production environment, we aren providing any configuration. You should do it on your own. Good luck.
 
+
+Running the MagCrawler(v3)
+-----------
+
+The MagCrawler is a crawler designed to get information (links and other data) from the public articles inside a magazine and register it to a database. It does not have a final version because every single magazine has it's particularities.
+To run it (at a command shell), go to the philbrasil_res folder and type:
+```shell
+rails runner magcrawler/mag_crawler_v3.rb
+```
+
+
 <sup>1</sup> Maybe you need to update PATH or the gem executables will not run. Add `export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"` to your .bashrc or .zshrc, before you install the bundles.

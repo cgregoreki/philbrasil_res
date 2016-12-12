@@ -14,25 +14,26 @@ ActiveRecord::Schema.define(version: 20161124024858) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "author"
-    t.string   "title"
+    t.text     "title",                 limit: 65535
     t.integer  "year"
     t.string   "magazine"
-    t.float    "vol_number",       limit: 24
+    t.float    "vol_number",            limit: 24
     t.string   "translator"
-    t.boolean  "active",                         default: true
+    t.boolean  "active",                              default: true
     t.integer  "times_visited"
-    t.text     "link",             limit: 65535
+    t.text     "link",                  limit: 65535
     t.string   "article_type"
     t.string   "pub_company"
     t.string   "pub_company_city"
     t.string   "inside"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.string   "article_personal_type"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.integer  "edition"
     t.string   "issue"
     t.integer  "first_page"
     t.integer  "last_page"
-    t.text     "keywords",         limit: 65535
+    t.text     "keywords",              limit: 65535
   end
 
   create_table "articles_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

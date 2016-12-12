@@ -1,6 +1,7 @@
 # MagCrawler - Magazine Crawler and Indexer for Openjournal.
 # author:         Carlos Gregoreki
 # date created:   November 30th, 2016
+# updated:        December 11th, 2016
 
 # The pourpouse of this script is to gather information from a list of magazines
 # (shown below) and index their articles into PhilBrasil. Also, this script, when 
@@ -11,7 +12,7 @@
 # 1) visit the page of the magazine
 # 2) search for the total of pages that contains issues links
 # 3) for each of these pages, retrieve the links of the issues
-# 4) for each issue link, got into the issue and get all the articles
+# 4) for each issue link, go into the issue and get all the articles
 # 5) for each of these articles, go inside the url of the article and retrieve 
 #    the article information.
 # 6) register the article information to the database.
@@ -39,7 +40,7 @@ require 'open_uri_redirections'
 require 'openssl'
 require 'colorize'
 
-# ignore security.
+# ignore security. whatever.
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 

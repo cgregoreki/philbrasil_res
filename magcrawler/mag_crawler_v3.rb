@@ -16,7 +16,13 @@
 # 5) for each of these articles, go inside the url of the article and retrieve 
 #    the article information.
 # 6) register the article information to the database.
- 
+
+# =========================
+# IMPORTANT: this script does not yet search for updates in pages. 
+# The schema once built for this pourpose wasn't good enough. Then, 
+# later on, this feature needs to be redesigned and rewritten.
+# =========================
+
 # List of magazines:
 # Magazine        |        URL
 # ------------------------------------------------------------------------------------------------
@@ -387,10 +393,14 @@ def main()
    magazines_to_crawl = Hash.new
 
    if choose_specific_magazine_option and magazine_number > 0 then
+      print "Iniciando procedimento para UMA REVISTA ESPECÍFICA... "
       selected_magazine_name, select_magazine_url = select_magazine_info(magazine_number - 1)
       magazines_to_crawl[selected_magazine_name] = select_magazine_url
+      print "OK.\n".green
    else   
+      print "Iniciando procedimento para TODAS AS REVISTAS... "
       magazines_to_crawl = $magazines_urls
+      print "OK.\n".green
    end
 
    magazines_to_crawl.each do |mag_name, mag_url|
@@ -424,6 +434,8 @@ def main()
          end
       end
    end
+   puts "Fim " +  ";".blue + ")".red
+   puts "========================"
 end
 
 # END - MAIN FUNCTION

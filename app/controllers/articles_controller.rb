@@ -86,11 +86,9 @@ class ArticlesController < ApplicationController
       redirect_to "/"
     end
 
-    @articles = Article.where("author like ? 
-      or title like ? 
-      or magazine like ?
-      or translator like ?
-      or keywords like ?", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%")
+    facade = ArticlesFacade.new
+    @articles = facade.get_cleaned_relevant_articles(search_string)
+    puts @articles[1]
     @articles.each do |art|
       if art.title[-1,1] == '.' then
         art.title = art.title[0, art.title.length - 1]

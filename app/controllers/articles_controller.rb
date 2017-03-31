@@ -78,7 +78,7 @@ class ArticlesController < ApplicationController
   end
 
 
-  #execute a simple search
+  # receives user inputs for a search and executes it.
   def search
     @active_page_title = "Pesquisar"
     search_string = params[:search]
@@ -86,25 +86,19 @@ class ArticlesController < ApplicationController
       redirect_to "/"
     end
 
-    @articles = Article.where("author like ? 
-      or title like ? 
-      or magazine like ?
-      or translator like ?
-      or keywords like ?", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%")
-    @articles.each do |art|
-      if art.title[-1,1] == '.' then
-        art.title = art.title[0, art.title.length - 1]
-      end
-    end
+    facade = ArticlesFacade.new(ArticlesService.new(ArticlesDao.new))
+    @articles = facade.get_sorted_relevant_articles(search_string)
   end
 
   def access
-    @article = Article.find(params[:article_id])
-    if @article.times_visited == nil then
-      @article.times_visited = 0
-    end
-    @article.times_visited = @article.times_visited + 1;
-    @article.save
+    facade = ArticlesFacade.new(ArticlesService.new(ArticlesDao.new))
+    @article = facade.access_article(params[:article_id])
+    # @article = Article.find(params[:article_id])
+    # if @article.times_visited == nil then
+    #   @article.times_visited = 0
+    # end
+    # @article.times_visited = @article.times_visited + 1;
+    # @article.save
 
     if @article.link.include? "http://"
       redirect_to @article.link

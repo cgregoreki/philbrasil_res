@@ -62,5 +62,24 @@ To run it (at a command shell), go to the philbrasil_res folder and type:
 rails runner magcrawler/mag_crawler_v3.rb
 ```
 
+The Architecture
+----------------
+
+While Rails is an agile development framework, a basic architecture needs to be in place to avoid breaking the 'single responsibility' concept. For that, instead of using a lot of model/service/business logic into the controllers and making it as big as the system grows, poisoning any will to support this project, we introduce more layers to the development. These are (down-top):
+    * DAOs: the layer that will make use of Rails' ActiveRecord on querying, saving, and editing data to the disk (to the database)
+    * Services: used to use the return from DAOs, i.e. data from the database, and apply the business logic to it, passing the results of these logics and calculations to the facades.
+    * Facades: used to compact the code reading by coupling services together when needed, and finally, building the correct data to show to the user beyond the controller layer.
+
+The pros:
+    * more readability
+    * single responsibility
+    * easier to maintain
+    * based on the good old fellas, the design patterns
+    * nice testability
+    * DRY (don't repeat yourself) principle
+
+The cons:
+    * when adding new feature, probably it will need to be built by separating all it's logic into these layers, what can lead to deal with various classes/files at the same time (but if you are a programmer you should be used to it ;P )
+
 
 <sup>1</sup> Maybe you need to update PATH or the gem executables will not run. Add `export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"` to your .bashrc or .zshrc, before you install the bundles.

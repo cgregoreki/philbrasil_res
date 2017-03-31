@@ -1,4 +1,7 @@
 require 'article.rb'
+
+# class that will make use of the activerecord features and send back to the service layer
+# the correct results.
 class ArticlesDao
 
 	# Returns a list of articles filtered by many columns with the same input params
@@ -27,8 +30,15 @@ class ArticlesDao
 		@return_list.uniq
 	end
 
+	def find_article_by_id(article_id)
+		return Article.find(article_id)
+	end
+
 	def get_total_clicks_for_all_articles()
 		return Article.sum("times_visited")
 	end
 
+	def save_article(article)
+		return article.save
+	end
 end	

@@ -1,11 +1,34 @@
 require 'articles_dao.rb'
 
+# class that uses the DAO methods and properties to clean data, 
+# treat Daos exceptions, make proper calculations related to the business
+# logic
 class ArticlesService
 
     attr_accessor :articles_dao
 
-    def initialize
-        @articles_dao = ArticlesDao.new
+    def initialize(articles_dao_in)
+        @articles_dao = articles_dao_in
+    end
+
+
+    # Returns the article specified by an id
+    # Params:
+    # +article_id+:: the article id
+    def get_article_by_id(article_id)
+        article = @articles_dao.find_article_by_id(article_id)
+        return article
+    end
+
+
+    def access_article(article_id)
+        article = @articles_dao.find_article_by_id(article_id)
+        
+        if article.times_visited.nil? 
+            article.times_visited = 0
+        end
+        article.times_visited += 1
+        return @articles_dao.save_article(article)
     end
 
     # Returns a list of articles to be handled by the view
@@ -15,7 +38,7 @@ class ArticlesService
 
         # if the string is empty or null, return nothing.
         if search_words == nil or search_words.empty?
-            return []
+            return [], []
         end
 
         words_list = search_words.split

@@ -1,11 +1,26 @@
+# class that mediates the interaction between controllers and services(that use DAO/DATA)
+# to compact the calls for the business layer from the controller, so it can be cleaner.
 class ArticlesFacade
 
     
     attr_accessor :articles_service
 
 
-    def initialize
-        @articles_service = ArticlesService.new
+    def initialize(articles_service_in)
+        @articles_service = articles_service_in
+    end
+
+
+    # Returns the article specified by an id and count one more
+    # access to it.
+    # Params:
+    # +article_id+:: the article id
+    def access_article(article_id)
+        if @articles_service.access_article(article_id)
+            return @articles_service.get_article_by_id(article_id)
+        end
+        # if it could not access the article, go back with empty hands
+        return nil
     end
 
 
@@ -25,6 +40,15 @@ class ArticlesFacade
         sorted_hash_list.each do |elem|
             @sorted_list.append(elem.first)
         end
+
+        # partially decorate each article removing a dot in the end of the title if
+        # it exists
+        @sorted_list.each do |art|
+            if art.title[-1,1] == '.' then
+                art.title = art.title[0, art.title.length - 1]
+            end
+        end
+
         @sorted_list
     end
 

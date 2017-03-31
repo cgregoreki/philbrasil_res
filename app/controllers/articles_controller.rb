@@ -87,8 +87,7 @@ class ArticlesController < ApplicationController
     end
 
     facade = ArticlesFacade.new
-    @articles = facade.get_cleaned_relevant_articles(search_string)
-    puts @articles[1]
+    @articles = facade.get_sorted_relevant_articles(search_string)
     @articles.each do |art|
       if art.title[-1,1] == '.' then
         art.title = art.title[0, art.title.length - 1]

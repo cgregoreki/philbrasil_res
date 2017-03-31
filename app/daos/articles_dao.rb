@@ -19,11 +19,16 @@ class ArticlesDao
 				or pub_company like ?
 				or pub_company_city like ?
 				or inside like ?
-				or author like ?", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%").
+				or link like ?", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%").
 			where("active = 1")
 			
 			@return_list.concat(articles)
 		end		
 		@return_list.uniq
 	end
+
+	def get_total_clicks_for_all_articles()
+		return Article.sum("times_visited")
+	end
+
 end	

@@ -93,12 +93,6 @@ class ArticlesController < ApplicationController
   def access
     facade = ArticlesFacade.new(ArticlesService.new(ArticlesDao.new))
     @article = facade.access_article(params[:article_id])
-    # @article = Article.find(params[:article_id])
-    # if @article.times_visited == nil then
-    #   @article.times_visited = 0
-    # end
-    # @article.times_visited = @article.times_visited + 1;
-    # @article.save
 
     if @article.link.include? "http://"
       redirect_to @article.link

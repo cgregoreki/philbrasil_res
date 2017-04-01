@@ -52,6 +52,17 @@ class ArticlesFacade
         @sorted_list
     end
 
+    def save_new_article_with_categories(article_params, selected_categories_params)
+        article = Article.new(article_params)
+        selected_categories_params = selected_categories_params.nil? ? [] : selected_categories_params
+        selected_categories_params.each do |sc|
+            category = Category.find(sc.to_i)
+            unless category.nil?
+                article.categories.append(category)
+            end
+        end
+        return @articles_service.save_or_update_article(article)
+    end
 
 private 
 
@@ -114,5 +125,4 @@ private
         word_count = string.each_char.each_cons(substring.size).map(&:join).count(substring)
         return word_count
     end
-
 end

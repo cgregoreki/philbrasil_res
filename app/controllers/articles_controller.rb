@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
   def new
     @active_page_title = "Inserir Referência"
     @article = Article.new
-    @all_categories = Category.all
+    @categories_facade = get_categories_facade
+    @all_categories = @categories_facade.get_all_categories()
   end
 
   # GET /articles/1/edit
@@ -30,14 +31,18 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @active_page_title = "Inserir Referência"
-    @article = Article.new(article_params)
+    @articles_facade = get_articles_facade
     selected_categories_params = params['selected_categories']
-    selected_categories_params.each do |sc|
-      @article.categories.append(Category.find(sc.to_i))
-    end
+    @article = @articles_facade.save_new_article_with_categories(article_params, selected_categories_params)
+
+    # @article = Article.new(article_params)
+    
+    # selected_categories_params.each do |sc|
+    #   @article.categories.append(Category.find(sc.to_i))
+    # end
 
     respond_to do |format|
-      if @article.save
+      if not @article.nil?
         format.html { redirect_to @article, notice: 'Referência incluída com sucesso.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -86,13 +91,13 @@ class ArticlesController < ApplicationController
       redirect_to "/"
     end
 
-    facade = ArticlesFacade.new(ArticlesService.new(ArticlesDao.new))
-    @articles = facade.get_sorted_relevant_articles(search_string)
+   @articles_facade = get_articles_facade
+    @articles = @articles_facade.get_sorted_relevant_articles(search_string)
   end
 
   def access
-    facade = ArticlesFacade.new(ArticlesService.new(ArticlesDao.new))
-    @article = facade.access_article(params[:article_id])
+   @articles_facade = get_articles_facade
+    @article = @articles_facade.access_article(params[:article_id])
 
     if @article.link.include? "http://"
       redirect_to @article.link
@@ -112,4 +117,24 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside, :edition, :selected_categories, :first_page, :last_page, :issue, :keywords)
     end
+
+    # ------------------------
+    # Construct facades only if they are nil
+
+    def get_categories_facade
+      if @categories_facade.nil? 
+        return CategoriesFacade.new(CategoriesService.new(CategoriesDao.new))
+      end
+      return @categories_facade
+    end
+
+    def get_articles_facade
+      if @articles_facade.nil?
+        return ArticlesFacade.new(ArticlesService.new(ArticlesDao.new))
+      end
+      return @articles_facade
+    end
+
+    # ------------------------
+
 end

@@ -20,6 +20,13 @@ class ArticlesService
         return article
     end
 
+    def save_or_update_article(article)
+        if article.nil? 
+            return nil
+        end
+        return @articles_dao.save_article(article) ? @articles_dao.find_article_by_id(article.id) : nil
+    end
+
 
     def access_article(article_id)
         article = @articles_dao.find_article_by_id(article_id)

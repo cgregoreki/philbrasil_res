@@ -88,6 +88,11 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+.text-logo{
+  font-family: 'Playfair Display', serif;
+}
+
 body {
 /*  background: #76b852;
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);

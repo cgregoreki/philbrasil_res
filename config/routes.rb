@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
 	get 'contact', to: 'contacts#new', as: 'contact' # contact_path returns contacts.new
 	post 'contact', to: 'contacts#create'	
+	get 'login', to: 'login#new'
   
 end

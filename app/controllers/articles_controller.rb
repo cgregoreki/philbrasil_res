@@ -33,6 +33,7 @@ class ArticlesController < ApplicationController
     @active_page_title = "Inserir Referência"
     @articles_facade = get_articles_facade
     selected_categories_params = params['selected_categories']
+    
     @article = @articles_facade.save_new_article_with_categories(article_params, selected_categories_params)
 
     # @article = Article.new(article_params)

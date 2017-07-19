@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   def home
     @active_menu = "home"
     @active_page_title = "Home"
+
+    render layout: "home", template: "application/home"
   end
 
   def about

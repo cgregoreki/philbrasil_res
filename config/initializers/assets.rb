@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( philbrasil.scss )
 Rails.application.config.assets.precompile += %w( login.css )
+Rails.application.config.assets.precompile += %w( home.css )

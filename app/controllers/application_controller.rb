@@ -28,6 +28,9 @@ class ApplicationController < ActionController::Base
     @active_menu = "updates"
     @active_page_title = "Atualizações"
   	@last_submissions = Article.all.order(created_at: :desc).limit(50)
+
+    render layout: "updates", template: "application/updates"
+
   end
   
 end

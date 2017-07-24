@@ -94,6 +94,9 @@ class ArticlesController < ApplicationController
 
    @articles_facade = get_articles_facade
     @articles = @articles_facade.get_sorted_relevant_articles(search_string)
+
+    render layout: "search", template: "articles/search"
+
   end
 
   def access

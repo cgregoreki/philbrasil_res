@@ -4,7 +4,6 @@
     <!-- CSS  -->
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag "philbrasil-home" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,6 +13,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    
+    <header>
+      <%= render 'common/header1' %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <%= render 'common/footer1' %>    
+    </footer>
+  
   </body>
+
 </html>
+ 

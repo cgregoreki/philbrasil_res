@@ -59,7 +59,7 @@ p {
     width: 100%;
     color: gray;
 }
-.philnav .text-logo-center-menu{
+.philnav .text-logo-center-menu {
     font-size: 200%;
     color: black;
 }
@@ -71,4 +71,8 @@ img {
 
 .col > .btn {
    width: 100%;
+}
+
+.desaturate {
+    filter: grayscale(100%);
 }

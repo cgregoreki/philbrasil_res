@@ -4,7 +4,15 @@
          <div id="resultados" class="section scrollspy">
             
             <% if @articles.length > 0 then %>
-            <h4>Resultados (<%= @articles.length %>)</h4>
+            <div class="row" style="display: flex;">
+               <div class="col s9">
+                  <h4>Resultados (<%= @articles.length %>)</h4>
+               </div>
+               <div class="col s3" style="align-items: stretch; position: relative;">
+                  <p style="position: absolute; bottom: 0;"><a href="#">Busca Avançada</a> </p>
+               </div>
+            </div>
+            <br/>
             <% @articles.each do |art| %>
             <div class="row">
                <div class="col s12">
@@ -35,6 +43,8 @@
                <div class="col s12">
                   <div class="container center-align">
                      <p class="center">Não foram encontrados resultados para sua busca.</p>
+                     <p class="center">Experimente nossa <a href="">Busca Avançada</a>.</p>
+
                   </div>
                </div>
             </div>

@@ -88,11 +88,13 @@ class ArticlesController < ApplicationController
   def search
     @active_page_title = "Pesquisar"
     search_string = params[:search]
+    
     if search_string.length < 1 then
       redirect_to "/"
+      return
     end
 
-   @articles_facade = get_articles_facade
+    @articles_facade = get_articles_facade
     @articles = @articles_facade.get_sorted_relevant_articles(search_string)
 
     render layout: "search", template: "articles/search"
@@ -104,9 +106,11 @@ class ArticlesController < ApplicationController
     @article = @articles_facade.access_article(params[:article_id])
 
     if @article.link.include? "http://"
-      redirect_to @article.link
+      redirect_to @article.
+      return
     else
       redirect_to "http://" + @article.link
+      return
     end
   end
 

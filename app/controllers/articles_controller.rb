@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @active_page_title = @article.title + " - " + @article.author
+
+    render layout: "search", template: "articles/show"
+
   end
 
   # GET /articles/new
@@ -102,11 +105,11 @@ class ArticlesController < ApplicationController
   end
 
   def access
-   @articles_facade = get_articles_facade
+    @articles_facade = get_articles_facade
     @article = @articles_facade.access_article(params[:article_id])
 
     if @article.link.include? "http://"
-      redirect_to @article.
+      redirect_to @article.link
       return
     else
       redirect_to "http://" + @article.link

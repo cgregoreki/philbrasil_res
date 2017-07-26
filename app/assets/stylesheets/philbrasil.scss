@@ -55,6 +55,14 @@ img {
     height: auto;
 }
 
+.col > form {
+    width: 100%;
+}
+
+form > .btn-block {
+    width: 100%;
+}
+
 .col > .btn {
    width: 100%;
 }
@@ -65,4 +73,9 @@ img {
 
 .center {
     text-align: center;
+}
+
+.pb-text-justify {
+    text-align: justify;
+    text-justify: inter-word;
 }

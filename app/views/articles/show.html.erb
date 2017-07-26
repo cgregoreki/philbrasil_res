@@ -1,116 +1,104 @@
-<%= render 'header' %>
-
-<main>
-
-  <% if notice != nil %>
-  <!-- show success message on register new article -->
-  <div class="row">
-    <div class="col s12">
-      <div class="container center-align">
-        <div class="z-depth-4 padding-chip-notice">
-          <%= notice %>
-        </div>
+<div class="container">
+   <% if notice != nil %>
+   <!-- show success message on register new article -->
+   <div class="row">
+      <div class="col s12">
+         <div class="container center-align">
+            <div class="z-depth-4 padding-chip-notice">
+               <%= notice %>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <% end %>
-
-  <div class="row">
-    <div class="col s2"></div>
-    <div class="col s8 article-title">
-      <h2><%= @article.title %></h2>
-    </div>
-    <div class="col s2"></div>
-  </div>
-
-  <div class="row">
-    <div class="col s2"></div>
-    <div class="col s8 article-author">
-      <b><%= @article.author %>  </b>
-    </div>
-    <div class="col s2"></div>
-  </div>  
-
-  <div class="row">
-    <div class="col s2"></div>
-    <div class="col s8">
-      <table class="striped">
-        <tbody>
-          <tr>
-            <td><b>Ano:</b></td><td><%= @article.year%></td>
-          </tr>
-          <% if @article.article_type.to_i == 0 %>
-          <tr>
-            <td><b>Revista:</b></td> <td> <%= @article.magazine%> </td>
-          </tr>
-          <% end %>
-          <% if @article.article_type.to_i == 0 %>
-          <tr>
-            <td><b>Número:</b></td> <td> <%= @article.issue%> </td>
-          </tr>
-          <tr>
-            <td><b>Volúme:</b></td> <td> <%= @article.vol_number%> </td>
-          </tr>
-          <tr>
-            <td><b>Páginas:</b></td> <td> <%= @article.first_page %> <% if @article.last_page != nil %>- <%= @article.last_page %><% end %> </td>
-          </tr>
-          <% else %>
-          <tr>
-            <td><b>Edição:</b></td> <td> <%= @article.edition%> </td>
-          </tr>
-          <% end %>
-          <% if @article.translator != nil and @article.translator.length > 1 %>
-          <tr>
-            <td><b>Tradutor:</b></td> <td> <%= @article.translator%> </td>
-          </tr>
-          <% end %>
-          <tr>
-            <td><b>Quantidade de acessos:</b></td> <td>  <%= @article.times_visited == nil ? 0 : @article.times_visited %> </td>
-          </tr>
-          <% if @article.article_type.to_i == 1 or @article.article_type.to_i == 2 %>
-          <tr>
-            <td><b>Editora:</b></td> <td> <%= @article.pub_company%> </td>
-          </tr>
-
-          <tr>
-            <td><b>Cidade:</b></td> <td> <%= @article.pub_company_city%> </td>
-          </tr>
-          <% end %>
-
-          <%if @article.article_type.to_i == 2 %>
-          <tr>
-            <td><b><i>In:</i></b></td> <td> <%= @article.inside%> </td>
-          </tr>
-          <% end %>
-          <tr>
-          <td>Acesse:</td><td>
-          
-              <%= render 'form_access_article' %>
-
-          </td>
-          </tr>
-
-          <tr>
-            <td>Palavras-Chave</td><td> <%= @article.keywords %></td>
-          </tr>
-          <tr><td>Categorias:</td>
-          <td>
-            <% @article.categories.each do |cat|%>
-            <%= link_to cat.name, category_path(cat.id) %> <br/>  
-            <% end %>
-          </td>
-          </tr>
-
-        </tbody>
-      </table>
-    </div>
-    <div class="col s2"></div>
-  </div>
- 
-</main>
-<!--
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
--->
-<%= render 'footer' %>
-<%= render 'application/final_scripts' %>
+   </div>
+   <% end %>
+   <div class="row">
+      <div class="col s12 pb-text-justify">
+         <h5><%= @article.title %></h5>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s12">
+         <b><%= @article.author %> </b>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s4">
+         Ano: <%= @article.year %>
+      </div>
+      <div class="col s4">
+         Revista: <%= @article.magazine.blank? ? "---" : @article.magazine %>
+      </div>
+      <div class="col s4">
+         Volume: <%= @article.vol_number <= 0 ? "---" : @article.vol_number %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s4">
+         Páginas:  <%= @article.first_page %> <% if @article.last_page != nil %>- <%= @article.last_page %><% end %>
+      </div>
+      <div class="col s4">
+         Edição: <%= @article.edition.blank? ? "---" : @article.edition %>
+      </div>
+      <div class="col s4">
+         Tradutor: <%= @article.translator.blank? ? "---" : @article.translator %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s4">
+         Editora: <%= @article.pub_company.blank? ? "---" : @article.pub_company %>
+      </div>
+      <div class="col s4">
+         Cidade: <%= @article.pub_company_city.blank? ? "---" : @article.pub_company_city %>
+      </div>
+      <div class="col s4">
+         Número de Acessos: <%= @article.times_visited == nil ? 0 : @article.times_visited %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s12">
+         Palavras-chave: <%= @article.keywords.blank? ? "---" : @article.keywords %>
+      </div>
+   </div>
+   <hr/>
+   <div class="row">
+      <div class="col s12">
+         <h4>Bibtex:</h4>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s12">
+         <%= @article.author %>. <b><%= link_to @article.title, article_path(@article.id) %>.</b> <i>In: <%= @article.magazine %></i><% if @article.vol_number != nil %>, <%= @article.vol_number%><% end %><% if @article.year != nil %>, <%= @article.year %>. <% else %>. <% end %>
+         <% if @article.translator != nil %>Tradução de <%= @article.translator %>. <% end %>
+         <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+               <div class="collapsible-header"><i class="material-icons">library_books</i>Bibtex</div>
+               <div class="collapsible-body">
+                  <p>
+                  <pre class="language-latex">
+                        <span class="bib">@article{<%= @article.magazine %><% if @article.year != nil %><%= @article.year %><% else %><% end %>,</span>
+                        <span class="Author">Author = {<%= @article.author %>},</span>
+                        <span class="Journal">Journal = {<%= @article.magazine %>},</span>    
+                        <span class="Title">Title = {<%= @article.title %>},</span>
+                        <span class="Volume">Volume = {<% if @article.vol_number != nil %><%= @article.vol_number%><% end %>},</span>
+                        <span class="Year">Year = {<% if @article.year != nil %><%= @article.year %><% else %><% end %>}}</span>
+                      </pre>
+                  </p>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="row" style="padding-top: 15px;">
+      <div class="col s8">
+         <%= form_for @article, url: article_access_path(@article.id), method: :post do |f| %>
+         <!-- <button class="btn waves-effect waves-light green" type="submit" name="action">Acessar</button> -->
+         <%= f.submit "Acessar", class: "btn waves-effect waves-light green btn-block" %>
+         <% end %>
+      </div>
+      <div class="col s4">
+         <%= form_for @article, url: article_access_path(@article.id), method: :post do |f| %>
+         <%= f.submit "Reportar", class: "btn waves-effect waves-light red btn-block" %>
+         <% end %>
+      </div>
+   </div>
+</div>

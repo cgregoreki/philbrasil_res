@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 	root 'application#home'
 	resources :articles do
 		post 'access'
+		post 'report'
+		post 'report_submit'
 	end
 
 	resources :categories, only: [:index, :show]

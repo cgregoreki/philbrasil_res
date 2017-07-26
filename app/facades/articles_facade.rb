@@ -64,6 +64,16 @@ class ArticlesFacade
         return @articles_service.save_or_update_article(article)
     end
 
+
+    def save_article_report(article_id, reason)
+        report_bad_article = ReportBadArticle.new
+        report_bad_article.article = @articles_service.get_article_by_id(article_id)
+        report_bad_article.description = reason
+
+        return @articles_service.save_new_report_bad_article(report_bad_article)
+
+    end
+
 private 
 
 

@@ -38,6 +38,13 @@ class ArticlesService
         return @articles_dao.save_article(article)
     end
 
+
+    def save_new_report_bad_article(report_bad_article)
+
+        return report_bad_article.save ? true : false
+
+    end
+
     # Returns a list of articles to be handled by the view
     # Params:
     # +search_words+:: the input string with words to search

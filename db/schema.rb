@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124024858) do
+ActiveRecord::Schema.define(version: 20170726152719) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "author"
@@ -62,4 +62,15 @@ ActiveRecord::Schema.define(version: 20161124024858) do
     t.text     "message",    limit: 65535
   end
 
+  create_table "report_bad_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "description",    limit: 65535
+    t.string   "reporter_name"
+    t.string   "reporter_email"
+    t.integer  "article_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["article_id"], name: "index_report_bad_articles_on_article_id", using: :btree
+  end
+
+  add_foreign_key "report_bad_articles", "articles"
 end

@@ -117,6 +117,31 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def report
+    @articles_facade = get_articles_facade
+
+    article = @articles_facade.access_article(params[:article_id])
+
+    @report_bad_article = ReportBadArticle.new
+    @report_bad_article.article = article
+  
+    render layout: "search", template: "articles/report"    
+  end
+
+  def report_submit 
+    @articles_facade = get_articles_facade
+    @article = @articles_facade.access_article(params[:article_id])
+    reason = params[:reason]
+
+    if not reason.blank? 
+      if @articles_facade.save_article_report(@article.id, reason)
+        @notice = "Seu report foi salvo com sucesso."
+        show
+      end
+
+    end
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -6,6 +6,11 @@
     </div>
 
     <div class="container">
+        <% if @all_categories == nil or @all_categories.length == 0 %>
+        <div class="col s12 center">
+            Nenhuma categoria registrada.
+        </div> 
+        <% end %>
         <% @all_categories.each do |c| %>
         <% if (c.children.length == 0 and c.parents.length == 0) or (c.children.length != 0) %>
         <ul class="collection with-header">

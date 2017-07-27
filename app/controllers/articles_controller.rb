@@ -23,6 +23,8 @@ class ArticlesController < ApplicationController
     @article = Article.new
     @categories_facade = get_categories_facade
     @all_categories = @categories_facade.get_all_categories()
+
+    render layout: "search", template: "articles/new"
   end
 
   # GET /articles/1/edit
@@ -118,6 +120,7 @@ class ArticlesController < ApplicationController
   end
 
   def report
+
     @articles_facade = get_articles_facade
 
     article = @articles_facade.access_article(params[:article_id])
@@ -135,8 +138,9 @@ class ArticlesController < ApplicationController
 
     if not reason.blank? 
       if @articles_facade.save_article_report(@article.id, reason)
-        @notice = "Seu report foi salvo com sucesso."
-        show
+        
+        flash[:info] = "Seu report foi salvo com sucesso."
+        redirect_to article_path(@article.id.to_s)
       end
 
     end

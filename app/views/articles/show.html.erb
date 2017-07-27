@@ -1,16 +1,6 @@
 <div class="container">
 
-   <% if @notice != nil %>
-   <!-- show success message on register new article -->
-   <div class="row">
-      <div class="col s12 center">
-          <div class="chip" style="background-color: #3ef281;">
-             <%= @notice %>
-             <i class="close material-icons">close</i>
-           </div>
-      </div>
-   </div>
-   <% end %>
+   <%= flash_message %>
    <div class="row">
       <div class="col s12 pb-text-justify">
          <h5><%= @article.title %></h5>

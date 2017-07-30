@@ -1,33 +1,34 @@
 <main>
-   <div class="valign-wrapper center-align" style="height: 100%;">
-      <div class="container fade">
-         <div class="row" style="position: relative;">
-            <div class="col s4" style="padding: 20px;">
-               <h1 class="text-logo">PhilBrasil</h1>
+    <div class="valign-wrapper center-align" style="height: 100%;">
+        <div class="container fade">
+            <div class="row" style="position: relative;">
+                <div class="col s4" style="padding: 20px;">
+                    <h1 class="text-logo">PhilBrasil</h1>
+                </div>
+                <div class="col s1">
+                </div>
+                <div class="col s7" style="position: absolute;  top: 50px; right:0px;">
+                    <%= form_tag "/search", method: "get", id: "form-search" do %>
+                        <div class="input-field">
+                            <input type="search" id="search" name="search" placeholder="Pesquisar por título, autor, revista...">
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        </div>
+                        <% end %>
+                </div>
             </div>
-            <div class="col s1">
+            <div class="row left-an">
+                <div class="col s3"><a href="/atualizacoes">Submeter Artigo</a></div>
+                <div class="col s3"><a href="/blog">Busca Avançada</a></div>
+                <div class="col s3"><a href="/atualizacoes">Atualizações</a></div>
+                <div class="col s3"><a href="/blog">Blog</a></div>
             </div>
-            <div class="col s7" style="position: absolute;  top: 50px; right:0px;">
-               <%= form_tag "/search", method: "get", id: "form-search" do %>
-                   <div class="input-field">
-                      <input type="search" id="search" name="search" placeholder="Pesquisar por título, autor, revista...">
-                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                   </div>
-               <% end %>
+            <div class="row left-an">
+                <div class="col s3"><a href="/sobre">Revistas Indexadas</a></div>
+                <div class="col s3"><a href="/sobre">Sobre</a></div>
+                <div class="col s3"><a href="/colabore">Colabore</a></div>
+                <!-- <div class="col s3"><a href="/sobre">Sobre</a></div>
+           <div class="col s3"><a href="/colabore">Colabore</a></div> -->
             </div>
-         </div>
-         <div class="row">
-            <div class="col s12">
-               <div class="philnav">
-                  <ul>
-                    <li><a href="/atualizacoes">Atualizações</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/sobre">Sobre</a></li>
-                    <li><a href="/colabore">Colabore</a></li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </main>

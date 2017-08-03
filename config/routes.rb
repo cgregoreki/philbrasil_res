@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :staffs
 	root 'application#home'
 	resources :articles do
 		post 'access'

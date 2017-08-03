@@ -43,3 +43,4 @@ gem 'annotate'
 
 gem 'gentelella-rails'
 gem 'modernizr-rails'
+gem 'devise'

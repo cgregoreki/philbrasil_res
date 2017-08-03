@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
     @categories_facade = get_categories_facade
     @all_categories = @categories_facade.get_all_categories()
 
-    render layout: "search", template: "articles/new"
+    render template: "articles/new"
   end
 
   # GET /articles/1/edit
@@ -102,7 +102,7 @@ class ArticlesController < ApplicationController
     @articles_facade = get_articles_facade
     @articles = @articles_facade.get_sorted_relevant_articles(search_string)
 
-    render layout: "search", template: "articles/search"
+    render template: "articles/search"
 
   end
 
@@ -128,7 +128,7 @@ class ArticlesController < ApplicationController
     @report_bad_article = ReportBadArticle.new
     @report_bad_article.article = article
   
-    render layout: "search", template: "articles/report"    
+    render template: "articles/report"    
   end
 
   def report_submit 

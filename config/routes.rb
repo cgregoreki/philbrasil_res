@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 		post 'report_submit'
 	end
 
+	get 'dashboard', to: "dashboard#index"
 	resources :categories, only: [:index, :show]
 	
 	get 'search', to: "articles#search"

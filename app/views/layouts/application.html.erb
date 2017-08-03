@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-<!-- CSS  -->
+    <!-- CSS  -->
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -9,11 +9,21 @@
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-
+    
     <title>PhilBrasil - <%= @active_page_title %></title>
+
   </head>
 
   <body>
-    <%= yield %>
+    
+    <header>
+      <%= render 'common/header1' %>
+    </header>
+
+    <main>
+      <%= yield %>
+      <%= render 'common/footer1' %>    
+    </main>
+    
   </body>
 </html>

@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :staffs
-	root 'application#home'
+	
 	resources :articles do
 		post 'access'
 		post 'report'
 		post 'report_submit'
 	end
 
-	get 'dashboard', to: "dashboard#index"
+	root 'application#home'
+	authenticate :staff do
+		get 'dashboard', to: "dashboard#index"
+	end
 	resources :categories, only: [:index, :show]
 	
 	get 'search', to: "articles#search"
@@ -18,7 +21,5 @@ Rails.application.routes.draw do
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 	get 'contact', to: 'contacts#new', as: 'contact' # contact_path returns contacts.new
-	post 'contact', to: 'contacts#create'	
-	get 'login', to: 'login#new'
-  
+	post 'contact', to: 'contacts#create'
 end

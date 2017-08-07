@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 	end
 
 	root 'application#home'
-	authenticate :staff do
+	# authenticate :staff do
 		get 'dashboard', to: "dashboard#index"
-	end
+	# end
 	resources :categories, only: [:index, :show]
 	
 	get 'search', to: "articles#search"

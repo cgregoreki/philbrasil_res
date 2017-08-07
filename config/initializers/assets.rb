@@ -9,9 +9,5 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( philbrasil.scss )
-Rails.application.config.assets.precompile += %w( philbrasil-home.scss )
-Rails.application.config.assets.precompile += %w( login.css )
-Rails.application.config.assets.precompile += %w( home.css )
-Rails.application.config.assets.precompile += %w( dashboard.scss )
-Rails.application.config.assets.precompile += %w( dashboard.js )
+Rails.application.config.assets.precompile += %w( philbrasil.scss philbrasil-home.scss home.css )
+Rails.application.config.assets.precompile += %w( dashboard.js dashboard.scss )

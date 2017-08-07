@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   def show
     @active_page_title = @article.title + " - " + @article.author
 
-    render layout: "search", template: "articles/show"
+    render template: "articles/show"
 
   end
 

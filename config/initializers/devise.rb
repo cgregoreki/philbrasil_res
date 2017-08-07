@@ -276,7 +276,9 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   Rails.application.config.to_prepare do
-    Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "devise" }
+    Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "dashboard" }
+    Devise::SessionsController.layout "dashboard"
+
     # And/or Sessions, Confirmations, Unlocks, Passwords
   end
 

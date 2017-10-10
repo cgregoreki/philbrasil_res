@@ -24,5 +24,13 @@ class ApplicationController < ActionController::Base
     @active_page_title = "Atualizações"
   	@last_submissions = Article.all.order(created_at: :desc).limit(50)
   end
+
+  def advanced_search
+    @active_page_title = "Busca Avançada"
+  end
+
+  def magazines
+    @active_page_title = "Revistas Indexadas"
+  end
   
 end

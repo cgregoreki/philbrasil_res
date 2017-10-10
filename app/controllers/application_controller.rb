@@ -32,5 +32,9 @@ class ApplicationController < ActionController::Base
   def magazines
     @active_page_title = "Revistas Indexadas"
   end
+
+  def blog
+    @active_page_title = "Blog"
+  end
   
 end

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :staffs
-	
 	resources :articles do
-		post 'access'
-		post 'report'
-		post 'report_submit'
+	 	post 'access'
+	
+	 	post 'report'
+	 	post 'report_submit'
 	end
 
 	root 'application#home'

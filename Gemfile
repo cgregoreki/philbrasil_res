@@ -17,6 +17,8 @@ gem 'nokogiri'
 gem 'open_uri_redirections'
 gem 'colorize'
 
+gem 'therubyracer'
+
 gem 'materialize-sass'
 gem 'font-awesome-sass'
 gem "nilify_blanks"
@@ -43,4 +45,4 @@ gem 'annotate'
 
 gem 'gentelella-rails'
 gem 'modernizr-rails'
-gem 'devise'
+# gem 'devise'

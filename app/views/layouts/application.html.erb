@@ -21,6 +21,12 @@
     </header>
 
     <main>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
       <%= yield %>
       <%= render 'common/footer1' %>    
     </main>

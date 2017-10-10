@@ -1,73 +1,32 @@
-<%= render 'articles/header' %>
-
 <main>
-  <h1 class="header center orange-text">Filosofia na sua língua</h1>
-  <div class="row center">
-    <h5 class="header col s12 light">O PhilBrasil é o site indexador da filosofia em português</h5>
-  </div>
-
-<!--  Search-->
-<%= form_tag "/search", method: "get", id: "form-search" do %>
-<div class="container">
-  <div class="card-panel">
-    <nav class="grey base">
-      <div class="input-field">
-          <input type="search" placeholder="Pesquise por autores, artigos, livros..." name="search" id="search" class="form-control input-lg">
-          <label for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons" onclick="document.getElementById('form-search').reset();">close</i>
-      </div>
-    </nav>
-  </div>
-</div>
-<div class="container">
-  <div class="row padding-form-search-button">
-    <div class="col s12 center-align">
-      <!-- <%= submit_tag "Pesquisar", class: "btn-large waves-effect waves-light orange" %> -->
+    <div class="valign-wrapper center-align" style="height: 100%;">
+        <div class="container fade">
+            <div class="row" style="position: relative;">
+                <div class="col s4" style="padding: 20px;">
+                    <h1 class="text-logo">PhilBrasil</h1>
+                </div>
+                <div class="col s1">
+                </div>
+                <div class="col s7" style="position: absolute;  top: 50px; right:0px;">
+                    <%= form_tag "/search", method: "get", id: "form-search" do %>
+                        <div class="input-field">
+                            <input type="search" id="search" name="search" placeholder="Pesquisar por título, autor, revista...">
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        </div>
+                        <% end %>
+                </div>
+            </div>
+            <div class="row left-an">
+                <div class="col s3"><a href="/articles/new">Submeter Artigo</a></div>
+                <div class="col s3"><a href="/advanced-search">Busca Avançada</a></div>
+                <div class="col s3"><a href="/atualizacoes">Atualizações</a></div>
+                <div class="col s3"><a href="/blog">Blog</a></div>
+            </div>
+            <div class="row left-an">
+                <div class="col s3"><a href="/magazines">Revistas Indexadas</a></div>
+                <div class="col s3"><a href="/sobre">Sobre</a></div>
+                <div class="col s3"><a href="/colabore">Colabore</a></div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-
-<div class="row center">
-  <!-- <a href="" id="download-button" class="btn-large waves-effect waves-light orange"><i class="material-icons left">search</i>Busca avançada</a> -->
-  <!-- <%= submit_tag "Pesquisar", class: "btn-large waves-effect waves-light orange" %> -->
-  <%= button_tag( :class => "btn-large waves-effect waves-light orange") do %>
-    Pesquisar <i class="material-icons left">search</i>
-  <% end %>
-   <a href="/articles/new" id="download-button" class="btn-large waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Vamos lá, é simples!"><i class="material-icons left">input</i>Inserir referência</a>
-</div>
-<% end %>
-
-<div class="container">
-  <div class="section">
-    <!--   Icon Section   -->
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="large material-icons">trending_up</i></h2>
-          <h5 class="center">Atualizações</h5>
-          <p class="light justify">Nosso banco de dados conta com 4169 artigos.</p>
-        </div>
-      </div>
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="large material-icons">group</i></h2>
-          <h5 class="center">Contribuições</h5>
-          <p class="light">O PhilBrasil é um projeto sem fins lucrativos que visa a divulgação dos trabalhos acadêmicos brasileiros em Filosofia.</p>
-        </div>
-      </div>
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="large material-icons">input</i></h2>
-          <h5 class="center">Submeta seu artigo</h5>
-          <p class="light text-justify">Sua contribuição também é importante. Ajude as pessoas a encontrar sua pesquisa submetendo sua contribuição diretamente.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </main>
-
-<%= render 'articles/footer'%>
-
-<%= render 'application/final_scripts' %>

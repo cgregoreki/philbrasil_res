@@ -1,0 +1,37 @@
+<div class="container">
+
+    <%= form_for @report_bad_article, url: article_report_submit_path(@report_bad_article.article.id), method: :post do |f| %>
+         
+        <div class="row">
+            <div class="col s12">
+                <h2>Reportar um Artigo</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input disabled value="<%= @report_bad_article.article.title %>" id="disabledTitle" type="text" class="validate">
+                <label for="disabledTitle">Título do Artigo</label>
+            </div>
+            <div class="input-field col s6">
+                <input disabled value="<%= @report_bad_article.article.author %>" id="disabledAuthor" type="text" class="validate">
+                <label for="disabledAuthor">Autor</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="reasonTextArea" name="reason" class="materialize-textarea"></textarea>
+                <label for="reasonTextArea">Escreva-nos uma descrição (p. ex. "link quebrado")</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s4"></div>
+            <div class="col s4">
+                <%= f.submit "Reportar", class: "btn waves-effect waves-light blue btn-block" %>
+            </div>
+            <div class="col s4"></div>
+        </div>
+
+
+    <% end %>
+</div>

@@ -1,52 +1,94 @@
-<%= render 'header' %>
-<main class="valign-wrapper">
+<div class="container">
 
-	<div class="container valign">
-	<!--
-		<div class="row">
-		
-			<div class="col s12 m9 l10">
-	      		<h3 class="">Inserir artigo, resenha, tradução...</h3>
-	    	</div>
-	    
-	  	</div>
-	-->
-	  	<ul class="collapsible" data-collapsible="accordion">
-	  		<li>
-	  			<div class="collapsible-header"><i class="material-icons">description</i>Artigo</div>
-	  			<div class="collapsible-body">
-		  			<div class="container padding-form">
-		  				<%= render 'form', article: @article %>
-		  			</div>
-	  			</div>
-	  		</li>
-	  		<li>
-	  			<div class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i>Livro</div>
-	  			<div class="collapsible-body">
-	  				<div class="container padding-form">
-		  				<%= render 'form_book', article: @article %>
-		  			</div>
-	  			</div>
-	  		</li>
-	  		<li>
-	  			<div class="collapsible-header"><i class="material-icons">library_books</i>Capítulo de Livro</div>
-	  			<div class="collapsible-body">		  			
-	  				<div class="container padding-form">
-		  				<%= render 'form_book_chapter', article: @article %>
-		  			</div>
-				</div>
-	  		</li>
-	  	</ul>
-        
-		
+  <div class="row" style="padding-top: 15px;">
+    <div class="col s12">
+      <h2>Submeter Artigo:</h2>
+    </div>
+  </div>
 
-	</div>
-
-	<!-- 
-	<%= link_to 'Back', articles_path %>
-	-->
-
-</main>
-
-<%= render 'footer' %>
-<%= render 'application/final_scripts' %>
+   <%= form_for(@article, :html => {:class => 'col s12'}) do |f| %>
+   <% if @article.errors.any? %>
+   <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+         <% @article.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+         <% end %>
+      </ul>
+   </div>
+   <% end %>
+   <div class="row">
+      <div class="input-field col s12">
+         <%= f.label :author, "Autor" %>
+         <%= f.text_field :author, placeholder: "CARNAP, Rudolf", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s12">
+         <%= f.label :title, "Título" %>
+         <%= f.text_field :title, placeholder: "Uberwindung der Metaphysik durch logische Analyse der Sprache", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s6">
+         <%= f.label :magazine, "Revista" %>
+         <%= f.text_field :magazine, placeholder: "Erkenntnis", class: "validate" %>
+      </div>
+      <div class="input-field col s6">
+         <%= f.label :year, "Ano" %>
+         <%= f.number_field :year, placeholder: "1931", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s6">
+         <%= f.label :issue, "Número" %>
+         <%= f.text_field :issue, placeholder: "1", class: "validate" %>
+      </div>
+      <div class="input-field col s6">
+         <%= f.label :vol_number, "Volume" %>
+         <%= f.text_field :vol_number, placeholder: "2", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s6">
+         <%= f.label :first_page, "Página Inicial" %>
+         <%= f.text_field :first_page, placeholder: "120", class: "validate" %>
+      </div>
+      <div class="input-field col s6">
+         <%= f.label :last_page, "Página Final" %>
+         <%= f.text_field :last_page, placeholder: "130", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s12">
+         <%= f.label :translator, "Tradutor" %>
+         <%= f.text_field :translator, placeholder: "Gilson Olegario da Silva", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s12">
+         <%= f.label :link, "Link" %>
+         <%= f.text_field :link, placeholder: "http://site-editora.com.br/artigo.html", class: "validate" %>
+      </div>
+   </div>
+   <div class="row">
+      <div class="input-field col s12">
+         <%= f.label :keywords, "Palavras-chave (separadas por vírgulas)" %>
+         <%= f.text_field :keywords, placeholder: "Idealismo Transcendental, Dialética, Ilusão, Realismo Empírico", class: "validate" %>
+      </div>
+   </div>
+   <!-- <div class="row">
+      <div class="input-field col s12">
+         <%= select_tag "selected_categories[]", options_from_collection_for_select(@all_categories, "id", "name"), {multiple: true} %>
+         <label>Selecione Categorias</label>
+      </div>
+    </div>-->
+   <div class="row">
+      <div class="col s12">
+         <div class="actions">
+            <%= f.submit "Submeter", class: "btn waves-effect waves-light display-block btn-acessar btn-block" %>
+         </div>
+      </div>
+   </div>
+   <% end %>
+</div>

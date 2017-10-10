@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @active_page_title = @article.title + " - " + @article.author
+
+    render template: "articles/show"
+
   end
 
   # GET /articles/new
@@ -20,6 +23,8 @@ class ArticlesController < ApplicationController
     @article = Article.new
     @categories_facade = get_categories_facade
     @all_categories = @categories_facade.get_all_categories()
+
+    render template: "articles/new"
   end
 
   # GET /articles/1/edit
@@ -33,6 +38,7 @@ class ArticlesController < ApplicationController
     @active_page_title = "Inserir Referência"
     @articles_facade = get_articles_facade
     selected_categories_params = params['selected_categories']
+    
     @article = @articles_facade.save_new_article_with_categories(article_params, selected_categories_params)
 
     # @article = Article.new(article_params)
@@ -87,25 +93,59 @@ class ArticlesController < ApplicationController
   def search
     @active_page_title = "Pesquisar"
     search_string = params[:search]
+    
     if search_string.length < 1 then
       redirect_to "/"
+      return
     end
 
-   @articles_facade = get_articles_facade
+    @articles_facade = get_articles_facade
     @articles = @articles_facade.get_sorted_relevant_articles(search_string)
+
+    render template: "articles/search"
+
   end
 
   def access
-   @articles_facade = get_articles_facade
+    @articles_facade = get_articles_facade
     @article = @articles_facade.access_article(params[:article_id])
 
     if @article.link.include? "http://"
       redirect_to @article.link
+      return
     else
       redirect_to "http://" + @article.link
+      return
     end
   end
 
+  def report
+
+    @articles_facade = get_articles_facade
+
+    article = @articles_facade.access_article(params[:article_id])
+
+    @report_bad_article = ReportBadArticle.new
+    @report_bad_article.article = article
+  
+    render template: "articles/report"    
+  end
+
+  def report_submit 
+    @articles_facade = get_articles_facade
+    @article = @articles_facade.access_article(params[:article_id])
+    reason = params[:reason]
+
+    if not reason.blank? 
+      if @articles_facade.save_article_report(@article.id, reason)
+        
+        flash[:info] = "Seu report foi salvo com sucesso."
+        redirect_to article_path(@article.id.to_s)
+      end
+
+    end
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

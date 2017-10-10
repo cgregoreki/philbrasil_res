@@ -1,126 +1,89 @@
-<%= render 'articles/header' %>
-
-<main>
-	<div class="container">
-		<div class="row">
-
-			<div class="col s12 m9 l10">
-				<h3 class="light">Revistas</h3>
-
-				As revistas listadas a seguir são periodicamente acessadas e atualizadas na base de dados do PhilBrasil. Os links apontam para os sites das revistas.
-
-				<ul class="collection">
-					<li class="collection-item">Archai</li>
-					<li class="collection-item">Crítica</li>
-					<li class="collection-item">Dois Pontos</li>
-					<li class="collection-item">Ethic@</li>
-					<li class="collection-item">Kriterion</li>
-					<li class="collection-item">Manuscrito</li>
-					<li class="collection-item">Natureza Humana</li>
-					<li class="collection-item">Principia</li>
-					<li class="collection-item">Princípios</li>
-					<li class="collection-item">Scientiae Studia</li>
-					<li class="collection-item">Studia Kantiana</li>
-					<li class="collection-item">Veritas@</li>
-				</ul>
-
-				<div class="text-about text-justify">
-					Mais revistas nacionais estão sendo cadastradas aos poucos no banco de dados do PhilBrasil. A seleção das indexações futuras está sendo orientada pela classificação no Qualis-Capes e política de acesso livre. Editores de revistas ainda não cadastradas ou que tenham licenças copyright podem manifestar o interesse de indexação mediante contato com os membros da equipe. Editores de revistas já cadastradas podem também entrar em contato para quaisquer esclarecimentos ou sugestões. <br/>
-					<br/>
-					Dicas para facilitar a indexação (não apenas no PhilBrasil, mas no Google Acadêmico e outros):
-					<ul>
-						<li>
-							Usar um sistema como o <a href="http://pkp.sfu.ca/?q=ojs">Open Journal Systems</a> (ver a versão em português <a href="http://seer.ibict.br/index.php">SEER</a>).
-						</li>
-						<li>
-							Não informar títulos com todas a letras em MAIÚSCULAS.
-						</li>
-						<li>
-							Manter um padrão na informação dos dados (ex.: usar sempre “Vol.” ou sempre “V.” para informar o “volume”, e não ambos).
-						</li>
-					</ul>
-				</div>
-
-
-				<div class="text-about text-justify">
-
-				</div>
-
-
-				<h3 class="light">Colaborações</h3>
-
-				<div class="text-justify">
-					O PhilBrasil está continuamente sendo aprimorado. Isso quer dizer que erros podem ser encontrados e que sua ajuda para corrigi-los é muito importante. Se você tem conhecimento em alguma área específica da filosofia, habilidades mínimas em informática e disposição para ajudar, também convidamos você a entrar em contato e tornar-se um editor de seção. Entre em contato com um dos membros da <a href="http://localhost:3000/sobre">equipe</a> para obter mais informações. Você também pode <a href=""> acrescentar referências</a> na base de dados do PhilBrasil, o que contribui para que nosso acervo fique mais completo. Uma terceira alternativa é contribuir com textos de apresentação para as categorias do site.
-				</div>
-				<div class="text-about text-justify">
-					Por fim, você pode ajudar a divulgar, por exemplo, seguindo <a href="http://www.facebook.com/portal.philbrasil">nossa página no Facebook</a> ou, se tiver um site ou blogue, colocando um link para o PhilBrasil.
-				</div>
-				<div class="text-about text-justify" >
-					Os seguintes endereços incluem links para o PhilBrasil e ajudam a aumentar os nossos acessos: 
-
-
-					<div class="collection">
-						<a href="http://fil.cfh.ufsc.br/" class="collection-item blue-text text-darken-2">Departamento de Filosofia da UFSC</a>
-						<a href="http://w3.ufsm.br/filosofia/" class="collection-item blue-text text-darken-2">Departamento de Filosofia da UFSM</a>					  
-					</div>
-
-
-					<h5 class="light">Blogues:</h5>
-					<div class="collection">
-						<a href="http://investigacao-filosofica.blogspot.com.br/" class="collection-item blue-text text-darken-2">Investigação Filosófica</a>
-						<a href="http://filoescola.blogspot.com.br/" class="collection-item blue-text text-darken-2">Filosofia na Escola</a>
-						<a href="http://pibidfilosofiauem.wordpress.com/" class="collection-item blue-text text-darken-2">Pibid/Filosofia UEM</a>
-						<a href="http://posfilosofia-ufu.blogspot.com.br/" class="collection-item blue-text text-darken-2">Pós-Graduação em Filosofia da UFU</a>
-						<a href="http://gruponietzscheufmg.blogspot.com.br/" class="collection-item blue-text text-darken-2">Grupo Nietzsche UFMG</a>
-					</div>
-
-					<h5 class="light">No exterior:</h5>
-					<div class="collection">
-						<a href="http://philpapers.org/help/about.html" class="collection-item blue-text text-darken-2">PhilPapers</a>
-						<a href="http://www.zetesis.fr/spip.php?article865" class="collection-item blue-text text-darken-2">Zetesis</a>
-						<a href="http://philognose.hypotheses.org/229" class="collection-item blue-text text-darken-2">Philognose</a>
-					</div>
-					<!-- Obrigado a todos! -->
-				</div>
-			</div>
-
-
-		</div>
-
-	</div>
-
-	<div class="container">
-		<h3 class="">Doações</h3>
-		<div class="row">
-		
-
-			<div class="col s6">
-			
-
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-					<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-					">
-					<input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
-					<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-				</form>
-
-			</div>
-			<div class="col s6">			
-				<form action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post">
-					<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-					<input type="hidden" name="currency" value="BRL" />
-					<input type="hidden" name="receiverEmail" value="gilsonolegario@gmail.com" />
-					<input type="hidden" name="iot" value="button" />
-					<input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/doacoes/120x53-doar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
-				</form>
-
-			</div>
-		</div>
-		
-	</div>
-
-</main>
-
-<%= render 'articles/footer' %>
-<%= render 'application/final_scripts' %>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h2 class="text-logo">Colabore</h2>
+            <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p>
+                Para que o
+                <font class="text-logo">PhilBrasil</font> mantenha-se online e com atualizações pertinentes, é necessário a colaboração da sociedade que o cerca. É possível contribuir com este projeto por meio das formas citadas abaixo.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h3 class="text-logo">Formas de Colaboração</h3>
+            <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4 class="text-logo">Submissão de Artigos:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p>
+                Com o objetivo de fornecer a maior quantidade de acessos à artigos de filosofia publicados em língua portuguesa, precisamos da atuação direta daqueles que desejam ter seus artigos indexados. Para isso, pode-se utilizar a página de <a href="#">inserção de artigos</a> para inserir os dados dos artigos desejados na base de dados do
+                <font class="text-logo">PhilBrasil</font>.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4 class="text-logo">Indexação de Revistas:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p>
+                Se você faz parte do corpo editorial e/ou administrativo de alguma revista de artigos de filosofia e deseja que os artigos de sua revista sejam indexados pelo
+                <font class="text-logo">PhilBrasil</font>, contate-nos pelo nosso <a href='mailto("contato@philbrasil.com.br")'>e-mail</a> identificando qual revista você representa. Assim, poderemos identificar e personalizar uma solução automatizada da indexação de seus títulos para este projeto.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4 class="text-logo">Doações:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p>
+                À medida que este projeto cresce e ganha corpo em seu banco de dados, os custos de processamento e de hospedagem também crescem. Atualmente, o
+                <font class="text-logo">PhilBrasil</font> conta com mais de 4 mil títulos indexados contando com mais de 10 revistas.
+            </p>
+            <p>
+                Como somos um projeto independente, sua manteneção - que inclui custos financeiros, de recursos humanos e de tempo - tem sido performada exclusivamente pelos integrantes de seu corpo e, mesmo que nossos ideais tenham mantido este projeto, a insustentabilidade nos acompanha à margem de um horizonte não muito distante.
+            </p>
+            <p>
+                Assim, pode-se contribuir com o
+                <font class="text-logo">PhilBrasil</font> por intermédio de doações arbitrárias na quantidade desejada daquele que contribui.
+            </p>
+            <p>
+                Para fazer uma doação escolha uma das opções abaixo:
+            </p>
+        </div>
+        <div class="col s6 center">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+                     ">
+                <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+                <!-- <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"> -->
+            </form>
+        </div>
+        <div class="col s6 center">
+            <form action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post">
+                <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+                <input type="hidden" name="currency" value="BRL" />
+                <input type="hidden" name="receiverEmail" value="gilsonolegario@gmail.com" />
+                <input type="hidden" name="iot" value="button" />
+                <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/doacoes/120x53-doar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+            </form>
+        </div>
+    </div>
+</div>

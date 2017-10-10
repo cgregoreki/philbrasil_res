@@ -111,3 +111,6 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
+config/database.yml
+
+db/schema.rb

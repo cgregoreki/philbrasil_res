@@ -1,55 +1,53 @@
-<%= render 'header'%>
-
-<main class="valign-wrapper">
-  <div class="container">
-    <div class="row">
+<div class="container">
+   <div class="row">
       <div class="col s12 m9 l12">
-
-        <div id="resultados" class="section scrollspy">
-          <h4>Resultados (<%= @articles.length %>)</h4>
-
-          <% if @articles.length > 0 then %>
-          <% @articles.each do |art| %>
-          <div class="row"> 
-            <div class="col s12">
-              <%= art.author %>. <b><%= link_to art.title, article_path(art.id) %>.</b> <i>In: <%= art.magazine %></i><% if art.vol_number != nil %>, <%= art.vol_number%><% end %><% if art.year != nil %>, <%= art.year %>. <% else %>. <% end %>
-              <% if art.translator != nil %>Tradução de <%= art.translator %>. <% end %>
-
-              <ul class="collapsible popout" data-collapsible="accordion">
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">library_books</i>Bibtex</div>
-                  <div class="collapsible-body">
-                    <p>
-                      <pre class="language-latex">
-                        <span class="bib">@article{<%= art.magazine %><% if art.year != nil %><%= art.year %><% else %><% end %>,</span>
-                        <span class="Author">Author = {<%= art.author %>},</span>
-                        <span class="Journal">Journal = {<%= art.magazine %>},</span>    
-                        <span class="Title">Title = {<%= art.title %>},</span>
-                        <span class="Volume">Volume = {<% if art.vol_number != nil %><%= art.vol_number%><% end %>},</span>
-                        <span class="Year">Year = {<% if art.year != nil %><%= art.year %><% else %><% end %>}}</span>
-                      </pre>
-                    </p>
+         <div id="resultados" class="section scrollspy">
+            <% if @articles.length > 0 then %>
+               <div class="row" style="display: flex;">
+                  <div class="col s9">
+                     <h4>Resultados (<%= @articles.length %>)</h4>
                   </div>
-                </li>
-              </ul> 
-
-            </div>
-          </div>  
-          <% end %>
-          <% else %>
-            <div class="row">
-              <div class="col s12">
-                <div class="container center-align">
-                  <h2 class="valign">Não foram encontrados resultados para sua busca.</h2>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
+                  <div class="col s3" style="align-items: stretch; position: relative;">
+                     <p style="position: absolute; bottom: 0;"><a href="#">Busca Avançada</a> </p>
+                  </div>
+               </div>
+               <br/>
+               <% @articles.each do |art| %>
+                  <div class="row">
+                     <div class="col s12">
+                        <%= art.author %>. <b><%= link_to art.title, article_path(art.id) %>.</b> <i>In: <%= art.magazine %></i><% if art.vol_number != nil %>, <%= art.vol_number%><% end %><% if art.year != nil %>, <%= art.year %>. <% else %>. <% end %>
+                        <% if art.translator != nil %>Tradução de <%= art.translator %>. <% end %>
+                        <ul class="collapsible popout" data-collapsible="accordion">
+                           <li>
+                              <div class="collapsible-header"><i class="material-icons">library_books</i>Bibtex</div>
+                              <div class="collapsible-body">
+                                 <p>
+                                 <pre class="language-latex">
+                              <span class="bib">@article{<%= art.magazine %><% if art.year != nil %><%= art.year %><% else %><% end %>,</span>
+                              <span class="Author">Author = {<%= art.author %>},</span>
+                              <span class="Journal">Journal = {<%= art.magazine %>},</span>    
+                              <span class="Title">Title = {<%= art.title %>},</span>
+                              <span class="Volume">Volume = {<% if art.vol_number != nil %><%= art.vol_number%><% end %>},</span>
+                              <span class="Year">Year = {<% if art.year != nil %><%= art.year %><% else %><% end %>}}</span>
+                            </pre>
+                                 </p>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               <% end %>
+            <% else %>
+               <div class="row">
+                  <div class="col s12">
+                     <div class="container center-align">
+                        <p class="center">Não foram encontrados resultados para sua busca.</p>
+                        <p class="center">Experimente nossa <a href="">Busca Avançada</a>.</p>
+                     </div>
+                  </div>
+               </div>
+            <% end %>
+         </div>
       </div>
-    </div>
-  </div> 
-</main>
-
-<%= render 'footer'%>
-<%= render 'application/final_scripts' %>
+   </div>
+</div>

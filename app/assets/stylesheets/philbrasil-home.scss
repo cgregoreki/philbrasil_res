@@ -1,0 +1,89 @@
+html, body, main {
+    width: 100%;
+    height: 100%;
+}
+body, main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main::after {
+    /*background-image: url('../images/philbrasil.png');*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    content: "";
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+main {
+    flex: 1 0 auto;
+}
+p {
+    text-align: justify;
+    text-indent: 50px;
+}
+
+.row {
+    width: 100%;
+}
+.text-logo {
+    font-family: 'Playfair Display', serif;
+}
+.philnav {
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    color: gray;
+    text-decoration: none;
+    line-height: 20px;
+    width: 100%;
+}
+.philnav ul {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+}
+.philnav li {
+    display: inline;
+    text-align: center;
+    padding: 20px;
+}
+.philnav a {
+    padding: 10px;
+    width: 100%;
+    color: gray;
+}
+.philnav .text-logo-center-menu {
+    font-size: 200%;
+    color: black;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.col > .btn {
+   width: 100%;
+}
+
+.desaturate {
+    filter: grayscale(100%);
+}
+
+.center {
+    text-align: center;
+}
+
+.left-an {
+    // font-family: 'Oswald', sans-serif;
+    font-family: 'Abel', sans-serif;
+
+    text-align: left;
+}

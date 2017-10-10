@@ -1,0 +1,66 @@
+<div class="container body">
+  <div class="main_container">
+    <%= render 'side_menu' %>
+
+    <!-- top navigation -->
+    <%= render 'top_nav' %>    
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+
+    <!-- START YOUR DEVELOPMENT HERE -->
+      <!-- top tiles -->
+      <!-- <%= render 'top_tiles' %> -->
+      <%= render 'tiles_articles' %>
+      <!-- /top tiles -->
+
+      <%= render 'x_panel_last_registered_articles' %>
+      <%= render 'x_panel_reported_articles' %>
+      <hr/>
+      <%= render 'x_panel_quick_classify_articles' %>
+      <!-- the graph -->
+      <!-- <%= render 'dashboard_graph' %> -->
+      <br />
+
+      <div class="row">
+        <!-- App Versions panel -->
+        <!-- <%= render 'x_panel_app_versions' %> -->
+
+        <!-- Device Usages panel -->
+        <!-- <%= render 'x_panel_device_usage' %> -->
+
+        <!-- Quick settings panel -->
+        <!-- <%= render 'x_panel_quick_settings' %> -->
+      </div>
+
+
+      <div class="row">
+        
+      <!-- Recent Activities Panel -->
+      <!-- <%= render 'x_panel_recent_activities' %> -->
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="row">
+            <!-- geo presentantion panel -->
+            <!-- <%= render 'x_panel_geo_presentation' %> -->
+          </div>
+          <div class="row">
+            <!-- To Do List-->
+            <!-- <%= render 'x_panel_to_do_list' %> -->
+            <!-- Weather Widget -->
+            <!-- <%= render 'x_panel_weather_widget' %> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+        <font class="text-logo">PhilBrasil</font> - 2017
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
+</div>

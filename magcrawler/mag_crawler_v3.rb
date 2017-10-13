@@ -310,10 +310,31 @@ def get_article_data_from_article_url(url)
             data['last_page'] = p.attribute('content').to_s
          when 'DC.Date.issued', 'citation_date'
             date_splitted = p.attribute('content').to_s.split('-')
-            year = date_splitted[0]
-            month = date_splitted[1]
-            day = date_splitted[2]
-            data['year'] = year.to_i
+            if (date_splitted.length < 2)
+               date_splitted = date_splitted.to_s.split('/')
+            end
+            print "date_splitted" + date_splitted.to_s + "\n"
+            if (date_splitted.length == 3)
+               year = date_splitted[0]
+               month = date_splitted[1]
+               day = date_splitted[2]
+               data['year'] = year.to_i
+            elsif (date_splitted.length == 2)
+               if (date_splitted[1].length == 2)
+                  month = date_splitted[1]
+                  year = date_splitted[0]
+               else
+                  year = date_splitted[1]  
+                  month = date_splitted[0]
+               end
+               data['year'] = year.to_i
+            elsif (date_splitted.length == 1)
+               data['year'] = year.to_i
+            else 
+               print "COULD NOT PARSE DATE".red
+               print "\n"
+            end
+
          when 'keywords'
             data['keywords'] = p.attribute('content').to_s
          when 'DC.Type.articleType'
@@ -423,6 +444,9 @@ def main()
             end
             articles_urls_list.each do |a_url|
                article_data = get_article_data_from_article_url(a_url)
+               print "URL: " + a_url + "\nARTICLE DATA: "
+               print article_data
+               print "\n"
                article_object = Article.new(article_data)
                print_article_info(article_object)
                begin

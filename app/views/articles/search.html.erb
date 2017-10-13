@@ -23,7 +23,7 @@
                               <div class="collapsible-body">
                                  <p>
                                  <pre class="language-latex">
-                              <span class="bib">@article{<%= art.magazine %><% if art.year != nil %><%= art.year %><% else %><% end %>,</span>
+                              <span class="bib">@article{<%= art.author.split(',').join('-').split(' ').join('-').sub('.', '').sub('--', '-')%><% if art.year != nil %><%=  + '-' + art.year.to_s %><% else %><% end %>,</span>
                               <span class="Author">Author = {<%= art.author %>},</span>
                               <span class="Journal">Journal = {<%= art.magazine %>},</span>    
                               <span class="Title">Title = {<%= art.title %>},</span>

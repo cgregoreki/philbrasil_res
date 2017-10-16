@@ -44,8 +44,10 @@ class ArticlesFacade
         # partially decorate each article removing a dot in the end of the title if
         # it exists
         @sorted_list.each do |art|
-            if art.title[-1,1] == '.' then
-                art.title = art.title[0, art.title.length - 1]
+            if !art.title.to_s.empty?
+                if art.title[-1,1] == '.' then
+                    art.title = art.title[0, art.title.length - 1]
+                end
             end
         end
 

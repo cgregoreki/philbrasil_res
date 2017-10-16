@@ -11,8 +11,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @active_page_title = @article.title + " - " + @article.author
-
+    if !@article.title.to_s.empty?
+      @active_page_title = @article.title + " - " + @article.author
+    else
+      @active_page_title = 'Título não informado' + " - " + @article.author
+    end
     render template: "articles/show"
 
   end

@@ -309,11 +309,12 @@ def get_article_data_from_article_url(url)
          when 'citation_lastpage'
             data['last_page'] = p.attribute('content').to_s
          when 'DC.Date.issued', 'citation_date'
+            date_original = p.attribute('content').to_s
             date_splitted = p.attribute('content').to_s.split('-')
             if (date_splitted.length < 2)
-               date_splitted = date_splitted.to_s.split('/')
+               date_splitted = date_original.to_s.split('/')
             end
-            print "date_splitted" + date_splitted.to_s + "\n"
+            after_second_split = date_splitted
             if (date_splitted.length == 3)
                year = date_splitted[0]
                month = date_splitted[1]
@@ -329,10 +330,21 @@ def get_article_data_from_article_url(url)
                end
                data['year'] = year.to_i
             elsif (date_splitted.length == 1)
+               year = date_splitted[0]
                data['year'] = year.to_i
             else 
                print "COULD NOT PARSE DATE".red
                print "\n"
+            end
+
+            if (data['year'].to_s.length < 4)
+               msg = 'CUIDADO!: Ano com comprimento inesperado: ' + data['year'].to_s
+               msg2 = 'ORIGINAL: ' + date_original.to_s
+               msg3 = 'AFTER SECOND SPLIT : ' + after_second_split.to_s      
+               print msg.red  + "\n"
+               print msg2.red + "\n"
+               print msg3.red + "\n"
+
             end
 
          when 'keywords'
@@ -470,3 +482,7 @@ end
 # EXECUTE EVERYTHING
 # ========================================= #
 main()
+
+
+
+# KRITERION, NATUREZA HUMANA estão com artigos sem títulos.

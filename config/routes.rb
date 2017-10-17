@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+    
+  	devise_for :users
+  	
 	resources :articles do
 	 	post 'access'
 	
@@ -7,10 +10,11 @@ Rails.application.routes.draw do
 	 	post 'report_submit'
 	end
 
-	root 'application#home'
-	# authenticate :staff do
+	root to: 'application#home'
+	authenticate :user do
 		get 'dashboard', to: "dashboard#index"
-	# end
+	end
+	
 	resources :categories, only: [:index, :show]
 	
 	get 'search', to: "articles#search"

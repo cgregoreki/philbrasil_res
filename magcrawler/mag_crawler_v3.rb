@@ -65,7 +65,8 @@ $magazines_urls = {
    "Principios" => "https://periodicos.ufrn.br/principios/issue/archive",
    "Scientiae Studia" => "http://www.revistas.usp.br/ss/issue/archive",
    "Studia Kantiana" => "http://www.sociedadekant.org/studiakantiana/index.php/sk/issue/archive",
-   "Veritas" => "http://revistaseletronicas.pucrs.br/ojs/index.php/veritas/issue/archive"
+   "Veritas" => "http://revistaseletronicas.pucrs.br/ojs/index.php/veritas/issue/archive",
+   "Unisinos" => "http://revistas.unisinos.br/index.php/filosofia/issue/archive"
    }
 
 # Time for logging.
@@ -240,15 +241,52 @@ def get_edition_urls(url)
    return links.uniq, false
 end
 
+# this is where we need to retrieve the boundaries 
+# of the pdf link
+
+# theres the need to get some info from the article, like
+# the year. if it's only a direct link to a pdf, we need to 
+# get the year from the pdf later. 
+
+#CHECK THIS OUT
+
+# def main()
+    
+#     url = "http://revistas.unisinos.br/index.php/filosofia/article/view/6559/3680"
+#     uri = URI.parse(url)
+
+#     http        = Net::HTTP.new(uri.host, 80)
+#     request     = Net::HTTP::Get.new(uri.path)
+#     response    = http.request(request)
+
+#     if response.body.starts_with? "%PDF"
+#         print "true\n".green
+
+#         io     = open(uri)
+#         reader = PDF::Reader.new(io)
+#         puts reader.info
+
+#     else
+#         print "false\n".red
+#     end
+
+# end
 def get_articles_links_from_edition_url(url, is_scielo)
-   links = []
+   
+   links    = []
+   authors  = []
+   titles   = []
+   counter  = 0
+
    doc = Nokogiri::HTML(open(url, :allow_redirections => :safe))  
    if !is_scielo then
       t_titles = doc.css('.tocArticle').css('.tocTitle')
       t_pdfs = doc.css('.tocArticle').css('.tocGalleys')
-
+      t_authors = doc.css('.tocArticle').css('.tocAuthors')
+      if t_authors.length != t_pdfs.length or t_authors.length != t_titles.length or t_titles.length != t_pdfs.length
+         puts "Arrays with different sizes".red
+      end
       tuple = t_titles.zip t_pdfs
-      
       tuple.each do |title, pdf|
          titulo = ""
          link = ""
@@ -262,10 +300,12 @@ def get_articles_links_from_edition_url(url, is_scielo)
          end
 
          links.push(link)
-
+         authors.push(t_authors[counter].text.strip)
+         titles.push(titulo)
+         counter = counter + 1
       end
 
-      return links
+      return links, authors, titles
    else
       # scielo part.
       doc.css("a[href]").each do |p|
@@ -273,7 +313,7 @@ def get_articles_links_from_edition_url(url, is_scielo)
             links.push(p.attribute('href').to_s)
          end
       end
-      return links
+      return links, authors, titles
    end
 end
 
@@ -362,8 +402,23 @@ end
 # ========================================= #
 # DATABASE FUNCTIONS 
 # ========================================= #
-def save_article_object_to_db(article)
+def save_article_object_to_db(article, url, author, title)
    
+   if (article.author == nil and author != nil)
+      puts 'Consertando autor: '.yellow + author.blue
+      article.author = author
+   end
+
+   if (article.title == nil and title != nil)
+      puts 'Consertando título: '.yellow + title.blue
+      article.title = title
+   end
+
+   if (article.link == nil and url != nil)
+      puts 'Consertando link: '.yellow + url.blue
+      article.link = url
+   end
+
    if article.title == nil or article.author == nil then
       raise "ARTICLE_NIL_REQUIRED_VALUE_ERROR"
    end
@@ -447,13 +502,14 @@ def main()
          edition_urls.each_with_index do |ed_url, index|
             puts "-*-*-*-*-"
             puts "Interpretando " + ((index+1).to_s + "ª").blue + " edição..." 
-            articles_urls_list = get_articles_links_from_edition_url(ed_url, is_scielo)
+            articles_urls_list, authors_list, titles_list = get_articles_links_from_edition_url(ed_url, is_scielo)
             # there's an intermediate page. Try to put '/showToc' in url
             # and execute again
             if articles_urls_list.length < 1 then
                ed_url = ed_url + "/showToc"
-               articles_urls_list = get_articles_links_from_edition_url(ed_url, is_scielo)
+               articles_urls_list, authors_list, titles_list = get_articles_links_from_edition_url(ed_url, is_scielo)
             end
+            counter = 0
             articles_urls_list.each do |a_url|
                article_data = get_article_data_from_article_url(a_url)
                print "URL: " + a_url + "\nARTICLE DATA: "
@@ -462,10 +518,15 @@ def main()
                article_object = Article.new(article_data)
                print_article_info(article_object)
                begin
-                  save_article_object_to_db(article_object)
+                  if authors_list.length == titles_list.length
+                     save_article_object_to_db(article_object, a_url, authors_list[counter], titles_list[counter])
+                  else
+                     save_article_object_to_db(article_object, a_url, authors_list[counter], nil)
+                  end
                rescue => e
                   chew_error_and_print_message(e)
                end
+               counter = counter + 1
             end 
          end
       end
@@ -482,7 +543,3 @@ end
 # EXECUTE EVERYTHING
 # ========================================= #
 main()
-
-
-
-# KRITERION, NATUREZA HUMANA estão com artigos sem títulos.

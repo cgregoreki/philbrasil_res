@@ -14,7 +14,7 @@ class ArticlesDao
 		# fetch to the database
 		@return_list = []
 		search_words_list.each do |word|
-			articles = Article.where("author like ? 
+			articles = Article.where('author like ?
 				or title like ? 
 				or magazine like ?
 				or translator like ?
@@ -22,8 +22,8 @@ class ArticlesDao
 				or pub_company like ?
 				or pub_company_city like ?
 				or inside like ?
-				or link like ?", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%").
-			where("active = 1")
+				or link like ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%").
+			where('active = 1')
 			
 			@return_list.concat(articles)
 		end		
@@ -35,7 +35,7 @@ class ArticlesDao
 	end
 
 	def get_total_clicks_for_all_articles()
-		return Article.sum("times_visited")
+		return Article.sum('times_visited')
 	end
 
 	def save_article(article)

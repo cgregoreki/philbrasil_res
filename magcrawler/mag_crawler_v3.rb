@@ -284,7 +284,9 @@ def get_articles_links_from_edition_url(url, is_scielo)
       t_pdfs = doc.css('.tocArticle').css('.tocGalleys')
       t_authors = doc.css('.tocArticle').css('.tocAuthors')
       if t_authors.length != t_pdfs.length or t_authors.length != t_titles.length or t_titles.length != t_pdfs.length
-         puts "Arrays with different sizes".red
+         puts 'Arrays with different sizes'.red
+         puts 'titles: '.blue + t_titles.length.to_s.green + ' | authors: '.blue + t_authors.length.to_s.green +
+                  ' | pdfs: '.blue + t_pdfs.length.to_s.green
       end
       tuple = t_titles.zip t_pdfs
       tuple.each do |title, pdf|
@@ -300,7 +302,11 @@ def get_articles_links_from_edition_url(url, is_scielo)
          end
 
          links.push(link)
-         authors.push(t_authors[counter].text.strip)
+         if t_authors[counter]
+            authors.push(t_authors[counter].text.strip)
+         else
+           authors.push('Autor Indefinido')
+         end
          titles.push(titulo)
          counter = counter + 1
       end

@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   end
 
   root to: 'application#home'
+
   authenticate :user do
-    get 'dashboard', to: 'dashboard#index'
+    get 'dashboard', to: 'dashboard#index', as: :user_root
   end
 
   resources :categories, only: [:index, :show]

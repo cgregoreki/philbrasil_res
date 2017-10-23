@@ -43,11 +43,11 @@ class ArticlesDao
   end
 
   def find_N_uncategorized_articles(n)
-    return Article.where("`articles`.`id` NOT IN (SELECT DISTINCT `id` from `articles_categories` )").limit(n).order("RAND()")
+    return Article.where('`articles`.`id` NOT IN (SELECT DISTINCT `id` from `articles_categories` )').limit(n).order('RAND()')
   end
 
   def find_number_of_categorized_articles
-    return Article.where("`articles`.`id` IN (SELECT DISTINCT `id` from `articles_categories` )").count
+    return Article.where('`articles`.`id` IN (SELECT DISTINCT `id` from `articles_categories` )').count
   end
 
   def find_number_of_reported_articles
@@ -60,6 +60,10 @@ class ArticlesDao
 
   def find_last_N_registered_articles(n)
     return Article.all.limit(n).order(created_at: :desc)
+  end
+
+  def find_N_unresolved_articles(n)
+    return Article.joins(:report_bad_articles).where(:report_bad_articles => {solved: [false, nil]}).limit(n).order('RAND()')
   end
 
 end	

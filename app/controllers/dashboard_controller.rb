@@ -9,6 +9,7 @@ class DashboardController < ApplicationController
 
     @n_uncategorized_articles = get_articles_facade.get_N_uncategorized_articles(PHILBRASIL_CONFIG['dashboard']['n_uncategorized_articles'])
     @last_N_registered_articles = get_articles_facade.get_last_N_registered_articles(PHILBRASIL_CONFIG['dashboard']['n_last_registered_articles'])
+    @n_reported_unresolved_articles = get_articles_facade.get_N_unresolved_articles(PHILBRASIL_CONFIG['dashboard']['n_last_unresolved_articles'])
     @all_categories = get_categories_facade.get_all_categories()
 
 

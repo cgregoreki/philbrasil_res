@@ -101,6 +101,10 @@ class ArticlesFacade
     return @articles_service.get_last_N_registered_articles(n)
   end
 
+  def get_N_unresolved_articles(n)
+    return @articles_service.get_N_unresolved_articles(n)
+  end
+
   private
 
 

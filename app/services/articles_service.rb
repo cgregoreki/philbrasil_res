@@ -92,4 +92,8 @@ class ArticlesService
     return @articles_dao.find_last_N_registered_articles(n)
   end
 
+  def get_N_unresolved_articles(n)
+    return @articles_dao.find_N_unresolved_articles(n)
+  end
+
 end

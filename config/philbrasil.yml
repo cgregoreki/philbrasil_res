@@ -1,0 +1,15 @@
+
+development:
+  dashboard:
+    n_uncategorized_articles : 5,
+    n_last_registered_articles : 5
+
+production:
+  dashboard:
+      n_uncategorized_articles : 5,
+      n_last_registered_articles : 5
+
+test:
+  dashboard:
+      n_uncategorized_articles : 5,
+      n_last_registered_articles : 5

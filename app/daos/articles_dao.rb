@@ -40,5 +40,26 @@ class ArticlesDao
 
 	def save_article(article)
 		return article.save
-	end
+  end
+
+  def find_N_uncategorized_articles(n)
+    return Article.where("`articles`.`id` NOT IN (SELECT DISTINCT `id` from `articles_categories` )").limit(n).order("RAND()")
+  end
+
+  def find_number_of_categorized_articles
+    return Article.where("`articles`.`id` IN (SELECT DISTINCT `id` from `articles_categories` )").count
+  end
+
+  def find_number_of_reported_articles
+    return ReportBadArticle.count
+  end
+
+  def find_number_of_reported_and_unresolved_articles
+    return ReportBadArticle.where(:solved => false).count
+  end
+
+  def find_last_N_registered_articles(n)
+    return Article.all.limit(n).order(created_at: :desc)
+  end
+
 end	

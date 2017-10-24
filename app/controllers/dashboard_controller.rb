@@ -20,6 +20,14 @@ class DashboardController < ApplicationController
 
   end
 
+  def category_new
+    @category = Category.new
+  end
+
+  def category_create
+
+  end
+
   private
 
   def get_articles_facade

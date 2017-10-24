@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    render status: :forbidden, text: "You do not have access to this page."
+    render status: :forbidden, text: 'You do not have access to this page.'
     # @articles = Article.all
   end
 
@@ -12,17 +12,17 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     if !@article.title.to_s.empty?
-      @active_page_title = @article.title + " - " + @article.author
+      @active_page_title = @article.title + ' - ' + @article.author
     else
-      @active_page_title = 'Título não informado' + " - " + @article.author
+      @active_page_title = 'Título não informado' + ' - ' + @article.author
     end
-    render template: "articles/show"
+    render template: 'articles/show'
 
   end
 
   # GET /articles/new
   def new
-    @active_page_title = "Inserir Referência"
+    @active_page_title = 'Inserir Referência'
     @article = Article.new
     @categories_facade = get_categories_facade
     @all_categories = @categories_facade.get_all_categories()
@@ -94,7 +94,7 @@ class ArticlesController < ApplicationController
 
   # receives user inputs for a search and executes it.
   def search
-    @active_page_title = "Pesquisar"
+    @active_page_title = 'Pesquisar'
     search_string = params[:search]
     
     if search_string.length < 1 then
@@ -105,7 +105,7 @@ class ArticlesController < ApplicationController
     @articles_facade = get_articles_facade
     @articles = @articles_facade.get_sorted_relevant_articles(search_string)
 
-    render template: "articles/search"
+    render template: 'articles/search'
 
   end
 
@@ -113,11 +113,11 @@ class ArticlesController < ApplicationController
     @articles_facade = get_articles_facade
     @article = @articles_facade.access_article(params[:article_id])
 
-    if @article.link.include? "http://"
+    if @article.link.include? 'http://'
       redirect_to @article.link
       return
     else
-      redirect_to "http://" + @article.link
+      redirect_to 'http://' + @article.link
       return
     end
   end
@@ -131,7 +131,7 @@ class ArticlesController < ApplicationController
     @report_bad_article = ReportBadArticle.new
     @report_bad_article.article = article
   
-    render template: "articles/report"    
+    render template: 'articles/report'
   end
 
   def report_submit 
@@ -142,7 +142,7 @@ class ArticlesController < ApplicationController
     if not reason.blank? 
       if @articles_facade.save_article_report(@article.id, reason)
         
-        flash[:info] = "Seu report foi salvo com sucesso."
+        flash[:info] = 'Seu report foi salvo com sucesso.'
         redirect_to article_path(@article.id.to_s)
       end
 

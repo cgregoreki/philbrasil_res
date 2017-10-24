@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   authenticate :user do
     get 'dashboard', to: 'dashboard#index', as: :user_root
     get 'dashboard/categories/new', to: 'dashboard#category_new'
+    post 'dashboard/categories/create', to: 'dashboard#category_create'
   end
 
   resources :categories, only: [:index, :show]

@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
   end
 
   def category_create
-
+    puts 'HAHAHHAHHAH'
   end
 
   private

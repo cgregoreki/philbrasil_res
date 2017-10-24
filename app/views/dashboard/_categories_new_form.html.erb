@@ -8,58 +8,29 @@
       </div>
       <div class="x_content">
         <br/>
-        <!--<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">-->
-        <%= form_for(@category, :html => {:class => 'form-horizontal form-label-left'}) do |f| %>
-
+        <%= form_for(@category, :url => url_for(:controller => 'dashboard', :action => 'category_create'), :html => {:class => 'form-horizontal form-label-left'}) do |f| %>
         <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name
-              <span class="required">*</span>
+          <%= f.label :name, 'Nome:', :class => 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.text_field :name, placeholder: 'Filosofia da Ciência', required: 'required', class: 'form-control col-md-7 col-xs-12' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Descrição:
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-              
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name
-              <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <div id="gender" class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                  <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                </label>
-                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                  <input type="radio" name="gender" value="female"> Female
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+              <%= f.text_area :description, rows: '12', style: 'width: 100%;', placeholder: 'Filosofia da ciência é a área da filosofia que pergunta sobre a ciência, de quais ideias parte, qual método usa, sobre qual fundamento e acerca de suas implicações. Apesar destes problemas gerais, muitos filósofos escreveram sobre algumas ciências particulares, como a física e a biologia.' %>
             </div>
           </div>
           <div class="ln_solid"></div>
           <div class="form-group">
-            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-              <button class="btn btn-primary" type="button">Cancel</button>
-              <button class="btn btn-primary" type="reset">Reset</button>
-              <button type="submit" class="btn btn-success">Submit</button>
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
+                <button class="btn btn-primary btn-block" type="reset">Reset</button>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12"  >
+                <button type="submit" class="btn btn-success btn-block">Cadastrar!</button>
+              </div>
             </div>
           </div>
 

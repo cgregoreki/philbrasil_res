@@ -55,7 +55,7 @@ class ArticlesDao
   end
 
   def find_number_of_reported_and_unresolved_articles
-    return ReportBadArticle.where(:solved => false).count
+    return ReportBadArticle.where(:solved => [false, nil]).count
   end
 
   def find_last_N_registered_articles(n)
@@ -63,7 +63,7 @@ class ArticlesDao
   end
 
   def find_N_unresolved_articles(n)
-    return Article.joins(:report_bad_articles).where(:report_bad_articles => {solved: [false, nil]}).limit(n).order('RAND()')
+    return Article.joins(:report_bad_articles).where(:report_bad_articles => {solved: [false, nil]}).limit(n).order('RAND()').select('articles.*, report_bad_articles.description as report_description')
   end
 
 end	

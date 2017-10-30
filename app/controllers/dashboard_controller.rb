@@ -18,6 +18,7 @@ class DashboardController < ApplicationController
     @total_number_of_reported_articles = get_articles_facade.get_total_number_of_reported_articles
     @total_number_of_reported_and_unresolved_articles = get_articles_facade.get_total_number_of_reported_and_unresolved_articles
 
+    @article = Article.new
   end
 
   def category_new
@@ -26,6 +27,44 @@ class DashboardController < ApplicationController
 
   def category_create
     puts 'HAHAHHAHHAH'
+  end
+
+  def delete_article
+    @delete_response = Hash.new
+
+    article_id = params['pb-js-id']
+    if article_id.nil?
+      puts 'ops!'
+      @delete_response['status'] = 'error'
+      @delete_response['message'] = 'id was null!'
+    else
+      begin
+        article = Article.find(article_id)
+        article.active = false
+        article.save
+
+        message = 'Artigo removido com sucesso.'
+
+        case params['pb-js-type']
+          when 'lnra'
+            flash[:notice_last_n_registered_articles] = message
+          when 'clua'
+            flash[:notice_classify_articles] = message
+          when 'reba'
+            flash[:notice_report_bad_articles] = message
+        end
+
+        @delete_response['status'] = 'success'
+        @delete_response['message'] = 'success'
+      rescue
+        @delete_response['status'] = 'error'
+        @delete_response['message'] = 'could not delete! could not find!'
+      end
+    end
+
+    respond_to do |format|
+      format.json {render json: @delete_response}
+    end
   end
 
   private

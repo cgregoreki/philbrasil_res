@@ -43,11 +43,11 @@ class ArticlesDao
   end
 
   def find_N_uncategorized_articles(n)
-    return Article.where('`articles`.`id` NOT IN (SELECT DISTINCT `id` from `articles_categories` )').limit(n).order('RAND()')
+    return Article.where('`articles`.`id` NOT IN (SELECT DISTINCT `id` from `articles_categories` ) and `articles`.`active` = 1').limit(n).order('RAND()')
   end
 
   def find_number_of_categorized_articles
-    return Article.where('`articles`.`id` IN (SELECT DISTINCT `id` from `articles_categories` )').count
+    return Article.where('`articles`.`id` IN (SELECT DISTINCT `id` from `articles_categories` ) and `articles`.`active` = 1').count
   end
 
   def find_number_of_reported_articles
@@ -55,15 +55,15 @@ class ArticlesDao
   end
 
   def find_number_of_reported_and_unresolved_articles
-    return ReportBadArticle.where(:solved => [false, nil]).count
+    return ReportBadArticle.joins(:article).where(:report_bad_articles => {:solved => [false, nil]}, :articles =>  {:active => true}).count
   end
 
   def find_last_N_registered_articles(n)
-    return Article.all.limit(n).order(created_at: :desc)
+    return Article.all.limit(n).order(created_at: :desc).where(:active => true)
   end
 
   def find_N_unresolved_articles(n)
-    return Article.joins(:report_bad_articles).where(:report_bad_articles => {solved: [false, nil]}).limit(n).order('RAND()').select('articles.*, report_bad_articles.description as report_description')
+    return Article.joins(:report_bad_articles).where(:report_bad_articles => {solved: [false, nil]}, :articles => {:active => true}).limit(n).order('RAND()').select('articles.*, report_bad_articles.description as report_description')
   end
 
 end	

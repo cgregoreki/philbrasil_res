@@ -1,0 +1,329 @@
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title red"><strong>Excluir Artigo</strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/dashboard/deletearticle" method="post" id="formdelete">
+
+        <div class="modal-body">
+          <p class="red"><strong>Confirma a exclusão do seguinte artigo?</strong></p>
+
+          <table class="table table-striped">
+            <tbody>
+            <tr>
+              <td>
+                <strong>Título:</strong>
+              </td>
+              <td>
+                <a id="pb-js-title" class="pb-js-title">asd</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Autor:</strong>
+              </td>
+              <td>
+                <a id="pb-js-author" class="pb-js-author">asd</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Revista:</strong>
+              </td>
+              <td>
+                <a id="pb-js-magazine" class="pb-js-magazine">asd</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Ano:</strong>
+              </td>
+              <td>
+                <a id="pb-js-year" class="pb-js-year">asd</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <input type="hidden" id="pb-js-id" name="pb-js-id" class="pb-js-id">
+          <input type="hidden" id="pb-js-type" name="pb-js-type" class="pb-js-type">
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Confirmar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="modal" id="exampleModal2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title red"><strong>Editar Artigo</strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--<%= form_for(@article, :html => {:class => 'col s12'}) do |f| %>-->
+          <!--
+          <% if @article.errors.any? %>-->
+              <!--<div id="error_explanation">-->
+              <!--<h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>-->
+              <!--<ul>-->
+              <!--
+              <% @article.errors.full_messages.each do |message| %>-->
+                  <!--<li><%= message %></li>-->
+                  <!--
+              <% end %>-->
+              <!--</ul>-->
+              <!--</div>-->
+              <!--
+          <% end %>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s12">-->
+          <!--<%= f.label :author, "Autor" %>-->
+          <!--<%= f.text_field :author, placeholder: "CARNAP, Rudolf", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s12">-->
+          <!--<%= f.label :title, "Título" %>-->
+          <!--<%= f.text_field :title, placeholder: "Uberwindung der Metaphysik durch logische Analyse der Sprache", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s6">-->
+          <!--<%= f.label :magazine, "Revista" %>-->
+          <!--<%= f.text_field :magazine, placeholder: "Erkenntnis", class: "validate" %>-->
+          <!--</div>-->
+          <!--<div class="input-field col s6">-->
+          <!--<%= f.label :year, "Ano" %>-->
+          <!--<%= f.number_field :year, placeholder: "1931", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s6">-->
+          <!--<%= f.label :issue, "Número" %>-->
+          <!--<%= f.text_field :issue, placeholder: "1", class: "validate" %>-->
+          <!--</div>-->
+          <!--<div class="input-field col s6">-->
+          <!--<%= f.label :vol_number, "Volume" %>-->
+          <!--<%= f.text_field :vol_number, placeholder: "2", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s6">-->
+          <!--<%= f.label :first_page, "Página Inicial" %>-->
+          <!--<%= f.text_field :first_page, placeholder: "120", class: "validate" %>-->
+          <!--</div>-->
+          <!--<div class="input-field col s6">-->
+          <!--<%= f.label :last_page, "Página Final" %>-->
+          <!--<%= f.text_field :last_page, placeholder: "130", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s12">-->
+          <!--<%= f.label :translator, "Tradutor" %>-->
+          <!--<%= f.text_field :translator, placeholder: "Gilson Olegario da Silva", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s12">-->
+          <!--<%= f.label :link, "Link" %>-->
+          <!--<%= f.text_field :link, placeholder: "http://site-editora.com.br/artigo.html", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+          <!--<div class="input-field col s12">-->
+          <!--<%= f.label :keywords, "Palavras-chave (separadas por vírgulas)" %>-->
+          <!--<%= f.text_field :keywords, placeholder: "Idealismo Transcendental, Dialética, Ilusão, Realismo Empírico", class: "validate" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; <div class="row">-->
+          <!--<div class="input-field col s12">-->
+          <!--<%= select_tag "selected_categories[]", options_from_collection_for_select(@all_categories, "id", "name"), {multiple: true} %>-->
+          <!--<label>Selecione Categorias</label>-->
+          <!--</div>-->
+          <!--</div>&ndash;&gt;-->
+          <!--<div class="row">-->
+          <!--<div class="col s12">-->
+          <!--<div class="actions">-->
+          <!--<%= f.submit "Submeter", class: "btn waves-effect waves-light display-block btn-acessar btn-block" %>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Editar Artigo</h2>
+
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <br>
+                  <!--<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">-->
+                  <%= form_for(@article, :html => {:class => 'form-horizontal form-label-left'}) do |f| %>
+                      <input type="hidden" class="pb-fr-id">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Título:
+                          <!--<span class="required">*</span>-->
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input type="text" id="pb-fr-title" required="required" class="form-control col-md-7 col-xs-12">-->
+                          <%= f.text_field :title, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Autor:
+                          <!--<span class="required">*</span>-->
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">-->
+                          <%= f.text_field :author, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div class="form-group">
+                        <label for="magazine" class="control-label col-md-3 col-sm-3 col-xs-12">Revista:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :magazine, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="year" class="control-label col-md-3 col-sm-3 col-xs-12">Ano:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :year, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="issue" class="control-label col-md-3 col-sm-3 col-xs-12">Número:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :issue, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="vol_number" class="control-label col-md-3 col-sm-3 col-xs-12">Vol.:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :vol_number, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="first_page" class="control-label col-md-3 col-sm-3 col-xs-12">Página Inicial:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :first_page, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="last_page" class="control-label col-md-3 col-sm-3 col-xs-12">Página Final:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :last_page, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div class="form-group">
+                        <label for="translator" class="control-label col-md-3 col-sm-3 col-xs-12">Tradutor:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :translator, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div class="form-group">
+                        <label for="link" class="control-label col-md-3 col-sm-3 col-xs-12">Link/URL:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :link, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="keywords" class="control-label col-md-3 col-sm-3 col-xs-12">Palavra(s)-chave:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <%= f.text_field :keywords, class: 'form-control col-md-7 col-xs-12' %>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div class="form-group">
+                        <label for="categories" class="control-label col-md-3 col-sm-3 col-xs-12">Categorias:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <!--<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">-->
+                          <!--<%= f.text_field :year, class: 'form-control col-md-7 col-xs-12' %>-->
+                          <%= select_tag "selected_categories[]", options_from_collection_for_select(@all_categories, "id", "name"), {:multiple => true, class: 'form-control col-md-7 col-xs-12', title: 'Ctrl + clique para múltiplas escolhas'} %>
+                          <!--<label>Selecione Categorias</label>-->
+                        </div>
+                      </div>
+
+
+
+                      <!--<div class="form-group">-->
+                        <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>-->
+                        <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                          <!--<div id="gender" class="btn-group" data-toggle="buttons">-->
+                            <!--<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">-->
+                              <!--<input type="radio" name="gender" value="male" data-parsley-multiple="gender"> &nbsp;-->
+                              <!--Male &nbsp;-->
+                            <!--</label>-->
+                            <!--<label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">-->
+                              <!--<input type="radio" name="gender" value="female" data-parsley-multiple="gender"> Female-->
+                            <!--</label>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <!--<div class="form-group">-->
+                        <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth-->
+                          <!--<span class="required">*</span>-->
+                        <!--</label>-->
+                        <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                          <!--<input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button class="btn btn-primary" type="button">Cancel</button>
+                          <button class="btn btn-primary" type="reset">Reset</button>
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+
+                      </form>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+

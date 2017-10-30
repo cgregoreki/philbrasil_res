@@ -16,5 +16,36 @@
   <body class="nav-md">
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+
+    <script type="text/javascript" charset="utf-8">
+        function changeModalParams(articleJson, type) {
+            $('.pb-js-title').text(articleJson['title']);
+            $('.pb-js-author').text(articleJson['author']);
+            $('.pb-js-year').text(articleJson['year']);
+            $('.pb-js-magazine').text(articleJson['magazine']);
+            $('.pb-js-id').val(articleJson['id']);
+            $('.pb-js-type').val(type);
+
+        }
+        $('#formdelete').submit(function () {
+            var valuesToSubmit = $(this).serialize();
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'), //sumbits it to the given url of the form
+                data: valuesToSubmit,
+                dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+            }).success(function (json) {
+                if (json['status'] == 'success'){
+                    location.reload();
+                } else {
+                    alert('FUCK U');
+                }
+                console.log("response", json);
+            });
+            return false; // prevents normal behaviour
+        });
+
+    </script>
+
   </body>
 </html>

@@ -1,25 +1,27 @@
 <div class="container body">
   <div class="main_container">
+
     <%= render 'side_menu' %>
 
     <!-- top navigation -->
-    <%= render 'top_nav' %>    
+    <%= render 'top_nav' %>
 
     <!-- page content -->
     <div class="right_col" role="main">
 
-    <!-- START YOUR DEVELOPMENT HERE -->
+      <!-- START YOUR DEVELOPMENT HERE -->
       <!-- top tiles -->
       <!-- <%= render 'top_tiles' %> -->
       <%= render 'tiles_articles' %>
       <!-- /top tiles -->
+      <%= render 'modals_edit_delete_article' %>
 
       <%= render 'x_panel_last_registered_articles' %>
       <%= render 'x_panel_reported_articles' %>
       <%= render 'x_panel_quick_classify_articles' %>
       <!-- the graph -->
       <!-- <%= render 'dashboard_graph' %> -->
-      <br />
+      <br/>
 
       <div class="row">
         <!-- App Versions panel -->
@@ -34,9 +36,9 @@
 
 
       <div class="row">
-        
-      <!-- Recent Activities Panel -->
-      <!-- <%= render 'x_panel_recent_activities' %> -->
+
+        <!-- Recent Activities Panel -->
+        <!-- <%= render 'x_panel_recent_activities' %> -->
         <div class="col-md-8 col-sm-8 col-xs-12">
           <div class="row">
             <!-- geo presentantion panel -->

@@ -26,7 +26,13 @@ class DashboardController < ApplicationController
   end
 
   def category_create
-    puts 'HAHAHHAHHAH'
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:notice_category] = 'Categoria Registrada com Sucesso.'
+      redirect_to '/dashboard/categories/new'
+
+    end
+
   end
 
   def delete_article
@@ -82,6 +88,11 @@ class DashboardController < ApplicationController
     end
     return @categories_facade
   end
+
+  def category_params
+    params.require(:category).permit(:name, :description)
+  end
+
 
 
 end

@@ -47,7 +47,7 @@ class ArticlesDao
   end
 
   def find_number_of_categorized_articles
-    return Article.where('`articles`.`id` IN (SELECT DISTINCT `id` from `articles_categories` ) and `articles`.`active` = 1').count
+    return Article.where('`articles`.`id` IN (SELECT DISTINCT `article_id` from `articles_categories` ) and `articles`.`active` = 1').count
   end
 
   def find_number_of_reported_articles

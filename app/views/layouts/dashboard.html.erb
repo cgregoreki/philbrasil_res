@@ -45,6 +45,30 @@
             return false; // prevents normal behaviour
         });
 
+        function changeModalEditArticleParams(articleJson, type){
+            $('.pb-fr-title').val(articleJson['title']);
+            $('.pb-fr-author').val(articleJson['author']);
+            $('.pb-fr-year').val(articleJson['year']);
+            $('.pb-fr-magazine').val(articleJson['magazine']);
+            $('.pb-fr-id').val(articleJson['id']);
+            $('.pb-fr-type').val(type);
+            $('.pb-fr-issue').val(articleJson['issue']);
+            $('.pb-fr-vol-number').val(articleJson['vol_number']);
+            $('.pb-fr-fist-page').val(articleJson['first_page']);
+            $('.pb-fr-last-page').val(articleJson['last_page']);
+            $('.pb-fr-translator').val(articleJson['translator']);
+            $('.pb-fr-link').val(articleJson['link']);
+            $('.pb-fr-keywords').val(articleJson['keywords']);
+
+            originalCategoriesList = articleJson['categories'];
+
+            selectedIds = [];
+            originalCategoriesList.forEach(function(item, index){
+              selectedIds.push(item['id']);
+            });
+            $('.pb-fr-categories').val(selectedIds);
+        }
+
     </script>
 
   </body>

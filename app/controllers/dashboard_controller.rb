@@ -35,6 +35,28 @@ class DashboardController < ApplicationController
 
   end
 
+  def edit_article_post
+    article = Article.find(edit_article_params['id'])
+    cats = []
+    edit_article_params['categories'].each do |cat|
+      if not cat.blank?
+        cats.append(Category.find(cat))
+      end
+    end
+    article.update(title: edit_article_params['title'],
+                   author: edit_article_params['author'],
+                   magazine: edit_article_params['magazine'],
+                   year: edit_article_params['year'],
+                   link: edit_article_params['link'],
+                   issue: edit_article_params['issue'],
+                   vol_number: edit_article_params['vol_number'],
+                   first_page: edit_article_params['first_page'],
+                   last_page: edit_article_params['last_page'],
+                   translator: edit_article_params['translator'],
+                   categories: cats)
+    article.save
+  end
+
   def delete_article
     @delete_response = Hash.new
 
@@ -47,9 +69,11 @@ class DashboardController < ApplicationController
       begin
         article = Article.find(article_id)
         article.active = false
-        article.save
-
-        message = 'Artigo removido com sucesso.'
+        if article.save
+          message = 'Artigo removido com sucesso.'
+        else
+          message = 'Não foi possível remover o artigo.'
+        end
 
         case params['pb-js-type']
           when 'lnra'
@@ -93,6 +117,9 @@ class DashboardController < ApplicationController
     params.require(:category).permit(:name, :description)
   end
 
+  def edit_article_params
+    params.require(:article).permit(:author, :title, :year, :magazine, :vol_number, :translator, :active, :times_visited, :link, :article_type, :pub_company, :pub_company_city, :inside, :edition, :first_page, :last_page, :issue, :keywords, :id, :categories => [])
+  end
 
 
 end

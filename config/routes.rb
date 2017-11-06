@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'dashboard/categories/new', to: 'dashboard#category_new'
     post 'dashboard/categories/create', to: 'dashboard#category_create'
     post 'dashboard/deletearticle', to: 'dashboard#delete_article'
+    post 'dashboard/article/edit', to: 'dashboard#edit_article_post'
   end
 
   resources :categories, only: [:index, :show]

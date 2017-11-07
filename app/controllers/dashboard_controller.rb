@@ -36,6 +36,7 @@ class DashboardController < ApplicationController
   end
 
   def edit_article_post
+
     article = Article.find(edit_article_params['id'])
     cats = []
     edit_article_params['categories'].each do |cat|
@@ -43,18 +44,29 @@ class DashboardController < ApplicationController
         cats.append(Category.find(cat))
       end
     end
-    article.update(title: edit_article_params['title'],
-                   author: edit_article_params['author'],
-                   magazine: edit_article_params['magazine'],
-                   year: edit_article_params['year'],
-                   link: edit_article_params['link'],
-                   issue: edit_article_params['issue'],
-                   vol_number: edit_article_params['vol_number'],
-                   first_page: edit_article_params['first_page'],
-                   last_page: edit_article_params['last_page'],
-                   translator: edit_article_params['translator'],
-                   categories: cats)
-    article.save
+
+    begin
+      article.update(title: edit_article_params['title'],
+                     author: edit_article_params['author'],
+                     magazine: edit_article_params['magazine'],
+                     year: edit_article_params['year'],
+                     link: edit_article_params['link'],
+                     issue: edit_article_params['issue'],
+                     vol_number: edit_article_params['vol_number'],
+                     first_page: edit_article_params['first_page'],
+                     last_page: edit_article_params['last_page'],
+                     translator: edit_article_params['translator'],
+                     categories: cats)
+      article.save
+
+      success_message = 'Artigo editado com sucesso.'
+      set_success_flash_notices(params['pb-fr-type'], success_message)
+    rescue
+      error_message = 'Não foi possível editar/salvar o artigo. Por favor, contate o Administrador.'
+      set_error_flash_notices(params['pb-fr-type'], error_message)
+    end
+
+    redirect_to '/dashboard'
   end
 
   def delete_article
@@ -75,14 +87,7 @@ class DashboardController < ApplicationController
           message = 'Não foi possível remover o artigo.'
         end
 
-        case params['pb-js-type']
-          when 'lnra'
-            flash[:notice_last_n_registered_articles] = message
-          when 'clua'
-            flash[:notice_classify_articles] = message
-          when 'reba'
-            flash[:notice_report_bad_articles] = message
-        end
+        set_success_flash_notices(params['pb-js-type'], message)
 
         @delete_response['status'] = 'success'
         @delete_response['message'] = 'success'
@@ -98,6 +103,28 @@ class DashboardController < ApplicationController
   end
 
   private
+
+  def set_error_flash_notices(type, message)
+    case type
+      when 'lnra'
+        flash[:error_notice_last_n_registered_articles] = message
+      when 'clua'
+        flash[:error_notice_classify_articles] = message
+      when 'reba'
+        flash[:error_notice_report_bad_articles] = message
+    end
+  end
+
+  def set_success_flash_notices(type, message)
+    case type
+      when 'lnra'
+        flash[:notice_last_n_registered_articles] = message
+      when 'clua'
+        flash[:notice_classify_articles] = message
+      when 'reba'
+        flash[:notice_report_bad_articles] = message
+    end
+  end
 
   def get_articles_facade
     if @articles_facade.nil?

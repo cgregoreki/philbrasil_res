@@ -18,6 +18,22 @@
                     <div class="col-md-8 col-md-offset-2 center">
 
                       <div class="alert alert-success" role="alert">
+                        <!--<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>-->
+                        <span class="sr-only">Mensagem:</span>
+                        <%= flash[:notice_classify_articles] %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+
+              <% if flash[:error_notice_classify_articles] %>
+                  <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-8 col-md-offset-2 center">
+
+                      <div class="alert alert-error" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Mensagem:</span>
                         <%= flash[:notice_classify_articles] %>
@@ -25,10 +41,10 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-
                     </div>
                   </div>
               <% end %>
+
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
@@ -68,7 +84,7 @@
                             <a><%= article.magazine %></a>
                           </td>
                           <td>
-                            <a><i title="edit" class="glyphicon glyphicon-edit glyphicon-dashboard-size" ></i></a>
+                            <a><i title="edit" class="glyphicon glyphicon-edit glyphicon-dashboard-size" data-toggle="modal" data-target="#exampleModal2" onclick="changeModalEditArticleParams(<%= article.to_json(:include => [:categories]) %>, 'clua');" ></i></a>
                             <a><i title="delete" class="glyphicon glyphicon-remove glyphicon-dashboard-size" data-toggle="modal" data-target="#exampleModal" onclick="changeModalParams(<%= article.to_json %>, 'clua');"></i></a>
                           </td>
                         </tr>
